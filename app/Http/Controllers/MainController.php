@@ -13,4 +13,24 @@ class MainController extends Controller
             'reviews' => "0"
         ]);
     }
+
+    public function artists()
+    {
+        return view('artists');
+    }
+
+    public function events()
+    {
+        return view('events');
+    }
+
+    public function blog()
+    {
+        return view('blog');
+    }
+
+    public function about()
+    {
+        return view('about');
+    }
 }

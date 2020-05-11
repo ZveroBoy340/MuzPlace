@@ -14,7 +14,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'MainController@index')->name('index');
+Route::get('/artists', 'MainController@artists')->name('artists');
+Route::get('/events', 'MainController@events')->name('events');
+Route::get('/blog', 'MainController@blog')->name('blog');
+Route::get('/about', 'MainController@about')->name('about');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/lk-events', 'HomeController@index')->name('home');
+Route::get('/lk-messages', 'HomeController@messages')->name('lk-messages');
+Route::get('/lk-chat', 'HomeController@chat')->name('lk-chat');
+Route::get('/lk-info', 'HomeController@info')->name('lk-info');
+Route::get('/lk-reviews', 'HomeController@reviews')->name('lk-reviews');
+Route::get('/lk-skills', 'HomeController@skills')->name('lk-skills');
+Route::get('/create', 'HomeController@create')->name('create');
