@@ -7,6 +7,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet"></head>
+    <link rel="stylesheet" href="/css/jsRapCalendar.css" />
 </head>
 <body>
     <div id="app">
@@ -32,16 +33,18 @@
                 </form>
                 <nav class="header__nav">
                     <ul class="header__nav-list">
-                        @if (Auth::user()->status  == "organizator")
-                            <li class="header__nav-item"><a href="{{ route('create') }}" class="btn-sm">Создать мероприятие</a></li>
-                        @endif
+                        @auth
+                            @if (Auth::user()->status  == "organizator")
+                                <li class="header__nav-item"><a href="{{ route('create') }}" class="btn-sm">Создать мероприятие</a></li>
+                            @endif
+                        @endauth
                         <li class="header__nav-item"><a href="{{ route('artists') }}" class="header__nav-link">Все артисты</a></li>
                         <li class="header__nav-item"><a href="{{ route('events') }}" class="header__nav-link">Все мероприятия</a></li>
                     </ul>
                 </nav>
                 @auth
                     <div class="user-profiles">
-                        <a href="{{ route('home') }}"><img src="img/user_ava.png" alt=""> <span>{{ Auth::user()->name }}</span></a>
+                        <a href="{{ route('home') }}"><img @if (Auth::user()->avatar  != null) src="/uploads/avatars/{{ Auth::user()->avatar }}" @else src="img/user_ava.png" @endif alt=""> <span>{{ Auth::user()->name }}</span></a>
                     </div>
                     <a class="header__login header__login--logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -106,6 +109,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/scripts.js') }}" defer></script>
+    <script src="{{ asset('js/jsRapCalendar.js') }}" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 </body>

@@ -9,76 +9,20 @@
                     <div class="title_skills">Название</div>
                     <div class="price_skills">Стоимость</div>
                 </div>
-                <div class="skill-item">
-                    <input type="checkbox" class="check_skill" id="skill_1">
-                    <label class="form-check-label" for="skill_1"></label>
-                    <input type="text" class="name_skill" value="Концерт">
-                    <input type="number" class="price_skill" value="1500">
-                    <span class="price_text">руб./час</span>
-                </div>
-                <div class="skill-item">
-                    <input type="checkbox" class="check_skill" id="skill_2">
-                    <label class="form-check-label" for="skill_2"></label>
-                    <input type="text" class="name_skill" value="Корпоратив">
-                    <input type="number" class="price_skill" value="1500">
-                    <span class="price_text">руб./час</span>
-                </div>
-                <div class="skill-item">
-                    <input type="checkbox" class="check_skill" id="skill_3">
-                    <label class="form-check-label" for="skill_3"></label>
-                    <input type="text" class="name_skill" value="Музыкальный фестифаль">
-                    <input type="number" class="price_skill" value="1500">
-                    <span class="price_text">руб./час</span>
-                </div>
-                <div class="skill-item">
-                    <input type="checkbox" class="check_skill" id="skill_4">
-                    <label class="form-check-label" for="skill_4"></label>
-                    <input type="text" class="name_skill" value="Рэп-батл">
-                    <input type="number" class="price_skill" value="1500">
-                    <span class="price_text">руб./час</span>
-                </div>
-                <div class="skill-item">
-                    <input type="checkbox" class="check_skill" id="skill_5">
-                    <label class="form-check-label" for="skill_5"></label>
-                    <input type="text" class="name_skill" value="Детский праздник">
-                    <input type="number" class="price_skill" value="1500">
-                    <span class="price_text">руб./час</span>
-                </div>
-                <div class="skill-item">
-                    <input type="checkbox" class="check_skill" id="skill_6">
-                    <label class="form-check-label" for="skill_6"></label>
-                    <input type="text" class="name_skill" value="Джем-сейшн">
-                    <input type="number" class="price_skill" value="1500">
-                    <span class="price_text">руб./час</span>
-                </div>
-                <div class="skill-item">
-                    <input type="checkbox" class="check_skill" id="skill_7">
-                    <label class="form-check-label" for="skill_7"></label>
-                    <input type="text" class="name_skill" value="Квартирник">
-                    <input type="number" class="price_skill" value="1500">
-                    <span class="price_text">руб./час</span>
-                </div>
-                <div class="skill-item">
-                    <input type="checkbox" class="check_skill" id="skill_8">
-                    <label class="form-check-label" for="skill_8"></label>
-                    <input type="text" class="name_skill" value="Бал">
-                    <input type="number" class="price_skill" value="1500">
-                    <span class="price_text">руб./час</span>
-                </div>
-                <div class="skill-item">
-                    <input type="checkbox" class="check_skill" id="skill_9">
-                    <label class="form-check-label" for="skill_9"></label>
-                    <input type="text" class="name_skill" value="Open air">
-                    <input type="number" class="price_skill" value="1500">
-                    <span class="price_text">руб./час</span>
-                </div>
-                <div class="skill-item">
-                    <input type="checkbox" class="check_skill" id="skill_10">
-                    <label class="form-check-label" for="skill_10"></label>
-                    <input type="text" class="name_skill" value="Другое">
-                    <input type="number" class="price_skill" value="1500">
-                    <span class="price_text">руб./час</span>
-                </div>
+                <form action="/lk-skills-update" method="post">
+                @csrf
+                @foreach ($available_skills as $skills)
+                    <div class="skill-item">
+                        <input type="hidden" name="skills_id[{{ $skills->id }}]">
+                        <input type="checkbox" name="skills_id[{{ $skills->id }}][]" class="check_skill" id="skill_{{ $skills->id }}" @if($status_skill[$skills->id][0] === 'on') checked @endif>
+                        <label class="form-check-label" for="skill_{{ $skills->id }}"></label>
+                        <div class="name_skill">{{ $skills->name }}</div>
+                        <input type="number" class="price_skill" name="prices[{{ $skills->id }}][]" @if($price_skill[$skills->id][0] !== 1500) value="{{$price_skill[$skills->id][0]}}" @else value="1500" @endif>
+                        <span class="price_text">руб./час</span>
+                    </div>
+                @endforeach
+                    <input type="submit" class="btn" value="Отправить">
+                </form>
             </div>
         </div>
         <div class="artist-content">

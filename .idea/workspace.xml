@@ -2,382 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5742ce69-5f4f-4c1c-bab4-cbedbb77db81" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/fonts/Circe-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/Circe-Light.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/fonts/Circe-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/about.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/artist-main.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/artist.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/artist2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog10.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog11.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog12.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog14.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog15.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog17.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog7.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog8.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/blog9.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/calendar.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/chat-curner.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/chat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/chat2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/directions.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/event-bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/event-img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/event-img1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/event-img2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/event-img3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/filter.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/form-bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/header__city.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/header__login.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/header__search.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/main-screen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/message.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/review.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/review2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/review3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/review4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/review5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/reviews-arrow.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/select-arrow.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/text-curner--light.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/text-curner.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/understand.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/1000people.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/100people.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/10people.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/404.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/admin-avatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/adminca-banner/adminca-preview.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/adminca-banner/angular.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/adminca-banner/bootstrap.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/adminca-banner/sprite.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/annet.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/black_p.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/blog/candles.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/blog/cropper-picture.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/blog/horse.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/blog/macarons.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/blog/magnifying-glass.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/blog/seascape.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/blog/storm.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/bloom_ava.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/calendar-strelka.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/click-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/delete-cover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/delete_ico.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/doc_book.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/edit-cover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/file.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/ASEAN.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Afghanistan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/African Union(OAS).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Albania.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Algeria.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/American Samoa.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Andorra.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Angola.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Anguilla.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Antarctica.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Antigua &amp; Barbuda.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Arab League.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Argentina.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Armenia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Aruba.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Australia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Austria.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Azerbaijan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Bahamas.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Bahrain.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Bangladesh.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Barbados.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Belarus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Belgium.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Belize.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Benin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Bermuda.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Bhutan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Bolivia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Bosnia &amp; Herzegovina.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Botswana.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Brazil.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Brunei.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Bulgaria.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Burkina Faso.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Burundi.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/CARICOM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/CIS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Cambodja.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Cameroon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Canada.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Cape Verde.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Cayman Islands.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Central African Republic.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Chad.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Chile.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/China.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Colombia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Commonwealth.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Comoros.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Congo-Brazzaville.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Congo-Kinshasa.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Cook Islands.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Costa Rica.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Cote d'Ivoire.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Croatia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Cuba.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Cyprus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Czech Republic.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Denmark.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Djibouti.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Dominica.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Dominican Republic.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Egypt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/El Salvador.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/England.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Equador.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Equatorial Guinea.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Eritrea.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Estonia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Ethiopia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/European Union.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Faroes.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Fiji.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Finland.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/France.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Gabon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Gambia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Georgia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Germany.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Ghana.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Gibraltar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Greece.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Greenland.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Grenada.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Guadeloupe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Guam.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Guatemala.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Guernsey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Guinea-Bissau.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Guinea.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Guyana.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Haiti.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Honduras.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Hong Kong.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Hungary.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Iceland.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/India.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Indonesia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Iran.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Iraq.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Ireland.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Islamic Conference.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Isle of Man.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Israel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Italy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Jamaica.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Jersey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Jordan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Kazakhstan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Kenya.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Kiribati.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Kosovo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Kuwait.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Kyrgyzstan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Laos.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Latvia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Lebanon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Lesotho.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Liberia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Libya.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Liechtenstein.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Lithuania.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Luxembourg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Macao.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Macedonia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Madagascar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Malawi.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Malaysia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Maldives.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Mali.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Malta.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Marshall Islands.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Martinique.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Mauritania.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Mauritius.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Mexico.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Micronesia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Moldova.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Monaco.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Mongolia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Montenegro.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Montserrat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Morocco.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Mozambique.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Myanmar(Burma).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/NATO.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Namibia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Nauru.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Nepal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Netherlands Antilles.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Netherlands.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/New Caledonia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/New Zealand.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Nicaragua.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Niger.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Nigeria.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/North Korea.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Northern Cyprus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Northern Ireland.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Norway.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/OPEC.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Olimpic Movement.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Oman.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Pakistan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Palau.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Palestine.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Panama.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Papua New Guinea.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Paraguay.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Peru.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Philippines.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Poland.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Portugal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Puerto Rico.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Qatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Red Cross.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Reunion.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Romania.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Russian Federation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Rwanda.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Saint Lucia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Samoa.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/San Marino.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Sao Tome &amp; Principe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Saudi Arabia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Scotland.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Senegal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Serbia(Yugoslavia).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Seyshelles.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Sierra Leone.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Singapore.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Slovakia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Slovenia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Solomon Islands.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Somalia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Somaliland.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/South Africa.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/South Korea.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Spain.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Sri Lanka.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/St Kitts &amp; Nevis.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/St Vincent &amp; the Grenadines.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Sudan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Suriname.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Swaziland.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Sweden.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Switzerland.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Syria.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Tahiti(French Polinesia).png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Taiwan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Tajikistan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Tanzania.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Thailand.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Timor-Leste.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Togo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Tonga.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Trinidad &amp; Tobago.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Tunisia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Turkey.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Turkmenistan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Turks and Caicos Islands.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Tuvalu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/UAE.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Uganda.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Ukraine.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/United Nations.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Uruguay.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Uzbekistan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Vanuatu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Vatican City.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Venezuela.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Viet Nam.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Virgin Islands British.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Virgin Islands US.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Wales.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Western Sahara.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Yemen.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Zambia.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/Zimbabwe.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/japan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/uk.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/flags/us.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/galka.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/headphone.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/image.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/image.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/kote.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/logos/logo-vue.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/melody-foto.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/microphone-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/more-review.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/obloshka.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/obloshka_file.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/play-button.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/plus_input_file.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/plus_track.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/purple_p.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/purple_strelka_down.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/repeat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/rev_img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/search-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/star-half.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/star-off.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/star-on.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/user_ava.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/users/u1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/users/u2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/users/u3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/users/u4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/users/u5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/users/u6.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/users/u7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/w_people.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/jquery.raty.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/jsRapCalendar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/raty.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/scripts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/about.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/artists.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/blocks/features.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/blocks/form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/blog.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/events.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/lk/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Artist.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Skills.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_14_174046_create_skills_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_14_175146_create_users_skills.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/jsRapCalendar.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/artist.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/main.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/main.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lk/info.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lk/info.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/lk/skills.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/lk/skills.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -386,46 +25,40 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution>
       <executable />
     </execution>
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="464">
-              <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/main.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-822">
-              <caret line="489" column="57" lean-forward="true" selection-start-line="489" selection-start-column="57" selection-end-line="489" selection-end-column="57" />
+            <state relative-caret-position="338">
+              <caret line="66" column="41" lean-forward="true" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="41" />
+              <folding>
+                <element signature="e#40#55#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/views/lk/skills.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="38" column="62" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="83" />
+            <state relative-caret-position="441">
+              <caret line="39" column="67" lean-forward="true" selection-start-line="39" selection-start-column="67" selection-end-line="39" selection-end-column="67" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/web.php">
+        <entry file="file://$PROJECT_DIR$/public/js/scripts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+            <state relative-caret-position="1470">
+              <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -439,6 +72,9 @@
       <find>$data</find>
       <find>/home</find>
       <find>всех</find>
+      <find>tel</find>
+      <find>skills_id</find>
+      <find>status</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -450,24 +86,17 @@
         <option value="$PROJECT_DIR$/resources/views/default_main.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
         <option value="$PROJECT_DIR$/.env" />
-        <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" />
-        <option value="$PROJECT_DIR$/public/css/styles.css" />
         <option value="$PROJECT_DIR$/resources/views/lk-events.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/scripts.js" />
         <option value="$PROJECT_DIR$/resources/views/lk-messages.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/lk-info.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/lk-chat.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/lk-reviews.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/lk-skills.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/resources/views/lk/create.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/MainController.php" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/blocks/features.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/events.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/blog.blade.php" />
@@ -475,6 +104,21 @@
         <option value="$PROJECT_DIR$/resources/views/artists.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/about.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/main.blade.php" />
+        <option value="$PROJECT_DIR$/public/css/jsRapCalendar.css" />
+        <option value="$PROJECT_DIR$/resources/views/layouts/app.blade.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/MainController.php" />
+        <option value="$PROJECT_DIR$/resources/views/artist.blade.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2020_05_14_174046_create_skills_table.php" />
+        <option value="$PROJECT_DIR$/app/Artist.php" />
+        <option value="$PROJECT_DIR$/app/Skills.php" />
+        <option value="$PROJECT_DIR$/public/css/styles.css" />
+        <option value="$PROJECT_DIR$/resources/views/lk/info.blade.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/public/js/scripts.js" />
+        <option value="$PROJECT_DIR$/database/migrations/2020_05_14_175146_create_users_skills.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/resources/views/lk/skills.blade.php" />
       </list>
     </option>
   </component>
@@ -576,11 +220,11 @@
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
-    <option name="y" value="2" />
+    <option name="y" value="3" />
     <option name="width" value="1452" />
-    <option name="height" value="865" />
+    <option name="height" value="864" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -590,7 +234,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -615,17 +258,6 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="muz_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="muz_project" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="Providers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="muz_project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="muz_project" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="muz_project" type="b2602c69:ProjectViewProjectNode" />
@@ -671,7 +303,7 @@
               <item name="muz_project" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="lk" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="muz_project" type="b2602c69:ProjectViewProjectNode" />
@@ -682,13 +314,14 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="editor.config.ad.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/blocks" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -699,8 +332,8 @@
       <recent name="W:\domains\muz_project\resources\views\lk" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="W:\domains\muz_project\resources\views\blocks" />
       <recent name="W:\domains\muz_project\resources\views" />
+      <recent name="W:\domains\muz_project\resources\views\blocks" />
       <recent name="W:\domains\muz_project\resources\views\lk" />
       <recent name="W:\domains\muz_project\public" />
       <recent name="W:\domains\muz_project\public\js" />
@@ -734,7 +367,11 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1589190110159</updated>
-      <workItem from="1589190111616" duration="22758000" />
+      <workItem from="1589190111616" duration="24404000" />
+      <workItem from="1589275238589" duration="19692000" />
+      <workItem from="1589464111400" duration="4942000" />
+      <workItem from="1589475326511" duration="12260000" />
+      <workItem from="1589527376134" duration="3622000" />
     </task>
     <task id="LOCAL-00001" summary="Engine is up and ready for work">
       <created>1589191721811</created>
@@ -750,11 +387,18 @@
       <option name="project" value="LOCAL" />
       <updated>1589191953750</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Основные страницы подключены, авторизация с выбором статуса при регистрации работает корректно. Страницы и блоки корректно подключены.">
+      <created>1589219284825</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1589219284825</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22758000" />
+    <option name="totallyTimeSpent" value="64920000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -766,18 +410,13 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="2" width="1452" height="865" extended-state="0" />
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="npm" side_tool="true" />
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2234957" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" weight="0.32913166" />
-      <window_info anchor="bottom" id="Database Changes" />
-      <window_info anchor="bottom" id="Version Control" weight="0.32913166" />
-      <window_info anchor="bottom" id="Terminal" weight="0.34033614" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="npm" order="2" side_tool="true" />
+      <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32913166" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.25350142" />
@@ -785,10 +424,15 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32913166" />
-      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Docker" order="7" weight="0.32913166" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32913166" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.32965517" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.34033614" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -796,46 +440,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Engine is up and ready for work" />
-    <option name="LAST_COMMIT_MESSAGE" value="Engine is up and ready for work" />
+    <MESSAGE value="Основные страницы подключены, авторизация с выбором статуса при регистрации работает корректно. Страницы и блоки корректно подключены." />
+    <option name="LAST_COMMIT_MESSAGE" value="Основные страницы подключены, авторизация с выбором статуса при регистрации работает корректно. Страницы и блоки корректно подключены." />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/composer.lock">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/artisan">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.styleci.yml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitattributes">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/.htaccess">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/favicon.ico">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/jquery.raty.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/index.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -844,13 +452,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/robots.txt">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/main.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1493">
-          <caret line="83" column="30" selection-start-line="83" selection-start-column="30" selection-end-line="83" selection-end-column="30" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/sass/app.scss">
       <provider selected="true" editor-type-id="text-editor" />
@@ -870,13 +471,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/ExampleComponent.vue">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/app.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225855">
-          <caret line="10755" column="1" selection-start-line="10755" selection-start-column="1" selection-end-line="10755" selection-end-column="1" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/app.css">
       <provider selected="true" editor-type-id="text-editor">
@@ -902,20 +496,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="443">
-          <caret line="69" column="42" selection-start-line="69" selection-start-column="37" selection-end-line="69" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="18" column="37" lean-forward="true" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/register.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -923,24 +503,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" column="20" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="17" column="47" lean-forward="true" selection-start-line="17" selection-start-column="47" selection-end-line="17" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="18" column="46" lean-forward="true" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
         </state>
       </provider>
     </entry>
@@ -965,76 +531,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="1571" column="1" selection-start-line="1571" selection-start-column="1" selection-end-line="1571" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/scripts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="27" column="3" lean-forward="true" selection-start-line="27" selection-start-column="3" selection-end-line="27" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/lk/lk-messages.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="672">
-          <caret line="32" column="14" selection-start-line="32" selection-start-column="14" selection-end-line="32" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/lk/lk-info.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="111" column="14" selection-start-line="111" selection-start-column="14" selection-end-line="111" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/lk/lk-events.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="176" column="45" selection-start-line="176" selection-start-column="45" selection-end-line="176" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/lk/lk-chat.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="132" column="14" lean-forward="true" selection-start-line="132" selection-start-column="14" selection-end-line="132" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/lk/lk-reviews.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="111" column="14" selection-start-line="111" selection-start-column="14" selection-end-line="111" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/lk/lk-skills.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="611">
-          <caret line="190" column="10" selection-start-line="190" selection-start-column="10" selection-end-line="190" selection-end-column="10" />
-          <folding>
-            <element signature="e#4947#4994#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/lk/lk-messages.blade.php" />
+    <entry file="file://$PROJECT_DIR$/resources/views/lk/lk-info.blade.php" />
+    <entry file="file://$PROJECT_DIR$/resources/views/lk/lk-events.blade.php" />
+    <entry file="file://$PROJECT_DIR$/resources/views/lk/lk-chat.blade.php" />
+    <entry file="file://$PROJECT_DIR$/resources/views/lk/lk-reviews.blade.php" />
+    <entry file="file://$PROJECT_DIR$/resources/views/lk/lk-skills.blade.php" />
     <entry file="file://$PROJECT_DIR$/resources/views/lk/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="611">
           <caret line="109" column="14" selection-start-line="109" selection-start-column="14" selection-end-line="109" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="33" column="29" lean-forward="true" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1059,13 +565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/artists.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="304" column="27" selection-start-line="304" selection-start-column="27" selection-end-line="304" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/events.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="485">
@@ -1080,31 +579,169 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/lk/messages.blade.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="464">
-          <caret line="55" column="33" lean-forward="true" selection-start-line="55" selection-start-column="33" selection-end-line="55" selection-end-column="33" />
+        <state relative-caret-position="189">
+          <caret line="15" column="24" lean-forward="true" selection-start-line="15" selection-start-column="24" selection-end-line="19" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
+    <entry file="file://$PROJECT_DIR$/resources/views/artists.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+        <state relative-caret-position="557">
+          <caret line="305" column="4" lean-forward="true" selection-start-line="305" selection-start-column="4" selection-end-line="305" selection-end-column="31" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="38" column="62" selection-start-line="38" selection-start-column="62" selection-end-line="38" selection-end-column="83" />
+        <state relative-caret-position="697">
+          <caret line="65" column="29" lean-forward="true" selection-start-line="65" selection-start-column="29" selection-end-line="65" selection-end-column="29" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/main.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-822">
-          <caret line="489" column="57" lean-forward="true" selection-start-line="489" selection-start-column="57" selection-end-line="489" selection-end-column="57" />
+        <state relative-caret-position="11970">
+          <caret line="570" column="7" selection-start-line="570" selection-start-column="7" selection-end-line="570" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/layouts/app.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="42" column="25" lean-forward="true" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/jsRapCalendar.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="611">
+          <caret line="101" column="1" selection-start-line="101" selection-start-column="1" selection-end-line="101" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/artist.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="54" column="26" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="19" column="12" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_08_19_000000_create_failed_jobs_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2014_10_12_100000_create_password_resets_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="536">
+          <caret line="1598" selection-start-line="1598" selection-end-line="1598" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Artist.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="73" selection-start-line="12" selection-start-column="50" selection-end-line="12" selection-end-column="73" />
+          <folding>
+            <element signature="e#23#62#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/MainController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="18" column="29" lean-forward="true" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+          <folding>
+            <element signature="e#40#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/lk/info.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="34" column="13" lean-forward="true" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Skills.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2020_05_14_174046_create_skills_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2020_05_14_175146_create_users_skills.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="19" column="35" selection-start-line="19" selection-start-column="35" selection-end-line="19" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/scripts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/lk/skills.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="39" column="67" lean-forward="true" selection-start-line="39" selection-start-column="67" selection-end-line="39" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="66" column="41" lean-forward="true" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="41" />
+          <folding>
+            <element signature="e#40#55#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
