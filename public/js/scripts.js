@@ -46,6 +46,95 @@ $('#btn_phone_show').click(function(){
     $('#show_phone').removeClass('none');
 });
 
+$('.current-genre span').click(function(){
+    $('.current-genre span').removeClass('active');
+    $(this).addClass('active');
+    var genre = $(this).attr("data-genre");
+    $('#current_genre').val(genre);
+});
+
+$("body").on("click",".delete_track",function(e){
+    $(this).parents('.track-item').remove();
+    var track_id = $(this).attr("data-track-id");
+    track_id = parseInt(track_id);
+    $("#tracks_"+track_id+"").remove();
+    $("#play_player").after('<input type="hidden" name="delete_track[]" id="delete_track" value="'+track_id+'">');
+});
+
+$("body").on("click",".play_track",function(e){
+    var play_url = $(this).attr("data-track-play");
+    if ($(this).hasClass('play')) {
+        document.getElementById("play_player").pause();
+        $('.play_track').removeClass('play');
+    }
+    else {
+        $('.play_track').removeClass('play');
+        $(this).addClass('play');
+        $("#play_player_src").attr("src", play_url);
+        document.getElementById("play_player").load();
+        document.getElementById("play_player").play();
+    }
+});
+
+$('.add_track').click(function(){
+    var track_num = $(this).attr("data-tracks");
+    track_num = parseInt(track_num);
+    var input_file = $("#tracks_"+track_num+"").val();
+
+    if (input_file != "" && input_file != null) {
+        track_num++;
+        $(this).attr('data-tracks', track_num);
+
+        $('.add_track_list.lk-event__item-btns').before('<input type="file" id="tracks_'+track_num+'" name="tracks[]" accept=".mp3,audio/*" class="none">');
+        $("#tracks_"+track_num+"").trigger("click");
+    }
+    else {
+        if (input_file == null) {
+            $('.add_track_list.lk-event__item-btns').before('<input type="file" id="tracks_'+track_num+'" name="tracks[]" accept=".mp3,audio/*" class="none">');
+            $("#tracks_"+track_num+"").trigger("click");
+        }
+        else {
+            $("#tracks_"+track_num+"").trigger("click");
+        }
+    }
+    check_tracks(input_file, track_num);
+});
+
+function check_tracks(input_file, track_num) {
+    $('#tracks_'+track_num+'').change(function(e){
+        var file = e.currentTarget.files[0];
+        var fileName = file.name;
+        fileName = fileName.replace(/\.[^/.]+$/, "");
+        var fileUrl = URL.createObjectURL(file);
+
+        $("#player_src").attr("src", fileUrl);
+        document.getElementById("player").load();
+
+        var audioElement = document.getElementById("player");
+        audioElement.onloadedmetadata = function() {
+            var currentTime = audioElement.duration;
+            var seconds = currentTime % 60;
+            var foo = currentTime - seconds;
+            var minutes = foo / 60;
+
+            seconds = parseFloat(seconds).toFixed(0);
+
+            if(seconds < 10){
+                seconds = "0" + seconds.toString();
+            }
+
+            var trackTime = minutes + ":" + seconds;
+            $('.my-track_list #player').after('<div class="track-item"><div class="play_track" data-track-play="'+fileUrl+'"></div> <div class="track_name">'+fileName+'</div> <div class="time_track">'+trackTime+'</div> <div class="delete_track" data-track-id="'+track_num+'"></div></div>');
+            $("#tracks_"+track_num+"").after('<input type="hidden" name="track_time[]" value="'+trackTime+'">');
+        };
+    });
+}
+
+$('.del-img').click(function(){
+    $('.cover-image img').attr('src', '');
+    $('#obloshka').val("");
+});
+
 function readURL(input) {
     if (input.files && input.files[0]) {
         var reader = new FileReader();

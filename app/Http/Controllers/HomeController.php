@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Genres;
 use App\Skills;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -56,14 +57,28 @@ class HomeController extends Controller
         $id = Auth::user()->id;
 
         $available_skills = Skills::orderBy('id', 'asc')->where('status', '=', 1)->get();
+        $available_genres = Genres::orderBy('id', 'asc')->where('status', '=', 1)->get();
 
         $user_skills = DB::table('users_skills')->where('user_id', $id)->first();
+        $user_tracks = DB::table('user_tracks')->where('user_id', $id)->get();
+
         $status_skill = json_decode($user_skills->skills_id, true);
         $price_skill = json_decode($user_skills->prices, true);
+        $genre_user = json_decode($user_skills->genre_id, true);
+
+        $current_genre = $user_skills->current_genre;
+        $text_albom = $user_skills->text_albom;
+        $obloshka = $user_skills->obloshka;
 
         return view('lk.skills', [
             'available_skills' => $available_skills,
+            'available_genres' => $available_genres,
+            'genre_user' => $genre_user,
+            'user_tracks' => $user_tracks,
             'status_skill' => $status_skill,
+            'current_genre' => $current_genre,
+            'obloshka' => $obloshka,
+            'text_albom' => $text_albom,
             'price_skill' => $price_skill
         ]);
     }
@@ -162,21 +177,79 @@ class HomeController extends Controller
     public function update_skills(Request $request)
     {
         $id = Auth::user()->id;
-        $skills_id = json_encode($request->input('skills_id'));
-        $prices = json_encode($request->input('prices'));
 
         if (DB::table('users_skills')->where('user_id', $id)->first()) {
-            DB::table('users_skills')->where('user_id', $id)->update([
-                'skills_id' => $skills_id,
-                'prices' => $prices,
-            ]);
+
         }
         else {
-            DB::table('users_skills')->updateOrInsert([
-                'skills_id' => $skills_id,
-                'user_id' => $id,
-                'prices' => $prices,
-            ]);
+            DB::table('users_skills')->insert(['user_id' => $id]);
+        }
+
+        if ($request->hasFile('obloshka')) {
+            $image = $request->file('obloshka');
+            $name = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/images/');
+            $image->move($destinationPath, $name);
+            DB::table('users_skills')->where('user_id', $id)->update(['obloshka' => $name]);
+        }
+
+        if ($request->input('delete_track')) {
+            $delete_track = $request->input('delete_track');
+            foreach ($delete_track as $file => $key) {
+                if (DB::table('user_tracks')->where('user_id', $id)->where('id', $key)->first()) {
+                    $track = DB::table('user_tracks')->where('user_id', $id)->where('id', $key)->first();
+                    unlink(public_path('/uploads/tracks/'.$track->url));
+                    DB::table('user_tracks')->where('user_id', $id)->where('id', $key)->delete();
+                }
+            }
+        }
+
+        if ($request->hasFile('tracks')) {
+            $track = $request->file('tracks');
+            $track_name = $request->input('track_name');
+            $track_time = $request->input('track_time');
+            $destinationPath = public_path('/uploads/tracks/');
+
+            foreach ($track as $file => $key) {
+                $name = time() . rand(1, 100) . '.' . $key->getClientOriginalExtension();
+                $title = $key->getClientOriginalName();
+                $title = preg_replace('/\\.[^.\\s]{3,4}$/', '', $title);
+                $key->move($destinationPath, $name);
+
+                $duration = $track_time[$file];
+
+                DB::table('user_tracks')->insert([
+                    'user_id' => $id,
+                    'name' => $title,
+                    'duration' => $duration,
+                    'url' => $name
+                ]);
+            }
+        }
+
+        if ($request->input('skills_id')) {
+            $skills_id = json_encode($request->input('skills_id'));
+            DB::table('users_skills')->where('user_id', $id)->update(['skills_id' => $skills_id]);
+        }
+
+        if ($request->input('genre_id')) {
+            $genre_id = json_encode($request->input('genre_id'));
+            DB::table('users_skills')->where('user_id', $id)->update(['genre_id' => $genre_id]);
+        }
+
+        if ($request->input('prices')) {
+            $prices = json_encode($request->input('prices'));
+            DB::table('users_skills')->where('user_id', $id)->update(['prices' => $prices]);
+        }
+
+        if ($request->input('current_genre')) {
+            $current_genre = $request->input('current_genre');
+            DB::table('users_skills')->where('user_id', $id)->update(['current_genre' => $current_genre]);
+        }
+
+        if ($request->input('text_albom')) {
+            $text_albom = $request->input('text_albom');
+            DB::table('users_skills')->where('user_id', $id)->update(['text_albom' => $text_albom]);
         }
 
         return redirect('/lk-skills/');
