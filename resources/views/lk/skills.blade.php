@@ -15,10 +15,10 @@
                     @foreach ($available_skills as $skills)
                         <div class="skill-item">
                             <input type="hidden" name="skills_id[{{ $skills->id }}]">
-                            <input type="checkbox" name="skills_id[{{ $skills->id }}][]" class="check_skill" id="skill_{{ $skills->id }}" @if($status_skill[$skills->id][0] != null) checked @endif>
+                            <input type="checkbox" name="skills_id[{{ $skills->id }}][]" class="check_skill" id="skill_{{ $skills->id }}" @if ($status_skill != null) @if($status_skill[$skills->id] != null) checked @endif @endif>
                             <label class="form-check-label" for="skill_{{ $skills->id }}"></label>
                             <div class="name_skill">{{ $skills->name }}</div>
-                            <input type="number" class="price_skill" name="prices[{{ $skills->id }}][]" @if($price_skill[$skills->id][0] !== 1500) value="{{$price_skill[$skills->id][0]}}" @else value="1500" @endif>
+                            <input type="number" class="price_skill" name="prices[{{ $skills->id }}][]" @if ($price_skill != null) @if($price_skill[$skills->id][0] !== 1500) value="{{$price_skill[$skills->id][0]}}" @endif @else value="1500" @endif>
                             <span class="price_text">руб./час</span>
                         </div>
                     @endforeach
@@ -40,14 +40,16 @@
                             <audio id="player" controls="" class="none" preload="metadata">
                                 <source id="player_src" src="">
                             </audio>
-                            @foreach ($user_tracks as $track)
-                            <div class="track-item">
-                                <div class="play_track" data-track-play="/uploads/tracks/{{ $track->url }}"></div>
-                                <div class="track_name">{{ $track->name }}</div>
-                                <div class="time_track">{{ $track->duration }}</div>
-                                <div class="delete_track" data-track-id="{{ $track->id }}"></div>
-                            </div>
-                            @endforeach
+                            @if ($user_tracks != null)
+                                @foreach ($user_tracks as $track)
+                                <div class="track-item">
+                                    <div class="play_track" data-track-play="/uploads/tracks/{{ $track->url }}"></div>
+                                    <div class="track_name">{{ $track->name }}</div>
+                                    <div class="time_track">{{ $track->duration }}</div>
+                                    <div class="delete_track" data-track-id="{{ $track->id }}"></div>
+                                </div>
+                                @endforeach
+                            @endif
                             <audio id="play_player" controls="" class="none" preload="metadata">
                                 <source id="play_player_src" src="">
                             </audio>
@@ -67,7 +69,7 @@
                         @foreach ($available_genres as $genres)
                             <div class="genre-item">
                                 <input type="hidden" name="genre_id[{{ $genres->id }}]">
-                                <input type="checkbox" name="genre_id[{{ $genres->id }}][]" class="check_skill" id="genre_{{$genres->id}}" @if($genre_user[$genres->id][0] != null) checked @endif>
+                                <input type="checkbox" name="genre_id[{{ $genres->id }}][]" class="check_skill" id="genre_{{$genres->id}}" @if($genre_user != null) @if($genre_user[$genres->id] != null) checked @endif @endif>
                                 <label class="form-check-label" for="genre_{{$genres->id}}">{{$genres->name}}</label>
                                 <div class="current-genre"><span data-genre="{{$genres->id}}" @if($genres->id == $current_genre) class="active" @endif>Основной</span></div>
                             </div>

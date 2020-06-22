@@ -42,11 +42,11 @@
             <div class="right-info">
                 <h2 class="info-cont__title">Информация и контакты</h2>
                 <p class="info-cont__text">{{ $user->about }}</p>
-                <div class="info-cont__tags">
+                {{--<div class="info-cont__tags">
                     <p class="info-cont__tag">Музыкальная группа (ВИА)</p>
                     <p class="info-cont__tag">Кавер-группа</p>
                     <p class="info-cont__tag">Оригинальный жанр-группа</p>
-                </div>
+                </div>--}}
                 <div class="info-cont__contacts">
                     <div class="info-cont__contacts-item">
                         <a id="none_phone">+7 XXX XXX-XX-XX</a>
@@ -114,243 +114,68 @@
             </div>
         </div>
     </section>
-    <section class="directions">
+    @if($skills)<section class="directions">
         <div class="center-wrap">
             <h2 class="directions__title">Направления и проекты</h2>
             <div class="directions__tags">
-                <div class="directions__tags-item directions__tags-item--active">Гитаристы 								<svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M16.586 3.8147e-06H19V2H17.414L13.166 6.242C12.7958 5.68302 12.317 5.20419 11.758 4.834L16.586 3.8147e-06ZM9 5C9.97224 5.00186 10.9105 5.35775 11.6394 6.00114C12.3683 6.64453 12.8379 7.53137 12.9605 8.49585C13.083 9.46034 12.8501 10.4364 12.3052 11.2417C11.7604 12.0469 10.9409 12.6261 10 12.871V13C10 13.9889 9.70676 14.9556 9.15735 15.7779C8.60794 16.6001 7.82705 17.241 6.91342 17.6194C5.99979 17.9978 4.99446 18.0969 4.02455 17.9039C3.05465 17.711 2.16373 17.2348 1.46447 16.5355C0.765206 15.8363 0.289002 14.9454 0.0960758 13.9755C-0.0968503 13.0056 0.00216642 12.0002 0.380605 11.0866C0.759043 10.173 1.39991 9.39206 2.22215 8.84266C3.0444 8.29325 4.0111 8 5 8L5.129 8.012C5.34835 7.15148 5.84781 6.38842 6.54868 5.84307C7.24955 5.29773 8.11196 5.00113 9 5ZM9 7.5C8.60218 7.5 8.22065 7.65804 7.93934 7.93934C7.65804 8.22065 7.5 8.60218 7.5 9C7.5 9.39783 7.65804 9.77936 7.93934 10.0607C8.22065 10.342 8.60218 10.5 9 10.5C9.39783 10.5 9.77936 10.342 10.0607 10.0607C10.342 9.77936 10.5 9.39783 10.5 9C10.5 8.60218 10.342 8.22065 10.0607 7.93934C9.77936 7.65804 9.39783 7.5 9 7.5ZM3.937 11.236L3.23 11.943L6.059 14.771L6.766 14.064L3.937 11.236Z" fill="#7A7999"/>
-                    </svg></div>
-                <div class="directions__tags-item">Рэперы
-                    <svg width="19" height="16" viewBox="0 0 19 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M6.73683 9.26321C8.59716 9.26321 10.1053 7.75512 10.1053 5.89479C10.1053 4.03446 8.59716 2.52637 6.73683 2.52637C4.8765 2.52637 3.36841 4.03446 3.36841 5.89479C3.36841 7.75512 4.8765 9.26321 6.73683 9.26321Z" fill="#7A7999"/>
-                        <path d="M6.73684 10.9474C4.48842 10.9474 0 12.0758 0 14.3158V16H13.4737V14.3158C13.4737 12.0758 8.98526 10.9474 6.73684 10.9474ZM13.2716 2.82947L11.8568 4.25263C12.5642 5.24632 12.5642 6.53474 11.8568 7.52842L13.2716 8.95158C14.9726 7.25053 14.9726 4.68211 13.2716 2.82947ZM16.0589 0L14.6863 1.37263C17.0189 3.91579 17.0189 7.73895 14.6863 10.4168L16.0589 11.7895C19.3432 8.51368 19.3516 3.41053 16.0589 0Z" fill="#7A7999"/>
-                    </svg>
-                </div>
-
-                <div class="directions__tags-item">Сломаная нога кривой кобылы
+                <div class="directions__tags-item directions__tags-item--active">@if($skills){{$available_genres[$skills->current_genre-1]['name']}}@endif
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.37826 0.622538L10.4135 5.43954L15.6239 5.88715C15.9853 5.91836 16.1323 6.36926 15.858 6.60662L11.9058 10.0307L13.0901 15.1245C13.1723 15.4784 12.7887 15.7569 12.4783 15.5688L8.00046 12.8683L3.52266 15.5688C3.21138 15.7561 2.82865 15.4776 2.91078 15.1245L4.09512 10.0307L0.142135 6.6058C-0.132183 6.36844 0.0140106 5.91754 0.37621 5.88633L5.58662 5.43872L7.62183 0.622538C7.7631 0.287442 8.237 0.287442 8.37826 0.622538Z" fill="#7A7999"/>
                     </svg>
-
                 </div>
+                <?php $i = 0; ?>
+                @foreach ($genre_artist as $item => $key)
+                    @if($key != null && $item != $skills->current_genre)
+                        <div class="directions__tags-item">{{$available_genres[$item-1]['name']}}
+                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.586 3.8147e-06H19V2H17.414L13.166 6.242C12.7958 5.68302 12.317 5.20419 11.758 4.834L16.586 3.8147e-06ZM9 5C9.97224 5.00186 10.9105 5.35775 11.6394 6.00114C12.3683 6.64453 12.8379 7.53137 12.9605 8.49585C13.083 9.46034 12.8501 10.4364 12.3052 11.2417C11.7604 12.0469 10.9409 12.6261 10 12.871V13C10 13.9889 9.70676 14.9556 9.15735 15.7779C8.60794 16.6001 7.82705 17.241 6.91342 17.6194C5.99979 17.9978 4.99446 18.0969 4.02455 17.9039C3.05465 17.711 2.16373 17.2348 1.46447 16.5355C0.765206 15.8363 0.289002 14.9454 0.0960758 13.9755C-0.0968503 13.0056 0.00216642 12.0002 0.380605 11.0866C0.759043 10.173 1.39991 9.39206 2.22215 8.84266C3.0444 8.29325 4.0111 8 5 8L5.129 8.012C5.34835 7.15148 5.84781 6.38842 6.54868 5.84307C7.24955 5.29773 8.11196 5.00113 9 5ZM9 7.5C8.60218 7.5 8.22065 7.65804 7.93934 7.93934C7.65804 8.22065 7.5 8.60218 7.5 9C7.5 9.39783 7.65804 9.77936 7.93934 10.0607C8.22065 10.342 8.60218 10.5 9 10.5C9.39783 10.5 9.77936 10.342 10.0607 10.0607C10.342 9.77936 10.5 9.39783 10.5 9C10.5 8.60218 10.342 8.22065 10.0607 7.93934C9.77936 7.65804 9.39783 7.5 9 7.5ZM3.937 11.236L3.23 11.943L6.059 14.771L6.766 14.064L3.937 11.236Z" fill="#7A7999"/>
+                            </svg>
+                        </div>
+                    <?php $i++; ?>
+                    @endif
+                @endforeach
             </div>
             <div class="directions__wrap">
                 <div class="directions__nav">
-                    <div class="directions__nav-item directions__nav-item--active">
-                        <h3 class='directions__nav-title'>Участие в рэп-баттле</h3>
-                        <p>От 5 000р. / час</p>
-                    </div>
-                    <div class="directions__nav-item">
-                        <h3 class='directions__nav-title'>Выступление на фестивале</h3>
-                        <p>От 3 000р. / час</p>
-                    </div>
-                    <div class="directions__nav-item">
-                        <h3 class='directions__nav-title'>Сольное выступление</h3>
-                        <p>14 000р.</p>
-                    </div>
-                    <div class="directions__nav-item">
-                        <h3 class='directions__nav-title'>Рэп баттл в баре 1703</h3>
-                        <p>От 2 000р. / час</p>
-                    </div>
-                    <div class="directions__nav-item">
-                        <h3 class='directions__nav-title'>Рэп баттл в баре 1703</h3>
-                        <p>От 2 000р. / час</p>
-                    </div>
-                    <div class="directions__nav-item">
-                        <h3 class='directions__nav-title'>Рэп баттл в баре 1703</h3>
-                        <p>От 2 000р. / час</p>
-                    </div>
-                    <div class="directions__nav-item">
-                        <h3 class='directions__nav-title'>Участие в рэп-баттле</h3>
-                        <p>От 5 000р. / час</p>
-                    </div>
-                    <div class="directions__nav-item">
-                        <h3 class='directions__nav-title'>Выступление на фестивале</h3>
-                        <p>От 3 000р. / час</p>
-                    </div>
-                    <div class="directions__nav-item">
-                        <h3 class='directions__nav-title'>Сольное выступление</h3>
-                        <p>14 000р.</p>
-                    </div>
-                    <div class="directions__nav-item">
-                        <h3 class='directions__nav-title'>Рэп баттл в баре 1703</h3>
-                        <p>От 2 000р. / час</p>
-                    </div>
-                    <div class="directions__nav-item">
-                        <h3 class='directions__nav-title'>Рэп баттл в баре 1703</h3>
-                        <p>От 2 000р. / час</p>
-                    </div>
-                    <div class="directions__nav-item">
-                        <h3 class='directions__nav-title'>Рэп баттл в баре 1703</h3>
-                        <p>От 2 000р. / час</p>
-                    </div>
+                    <?php $i = 0; ?>
+                    @foreach ($skills_project as $item => $key)
+                        @if($key != null)
+                            <div class="directions__nav-item @if ($i == 0) directions__nav-item--active @endif">
+                                <h3 class='directions__nav-title'>{{$projects[$item-1]['name']}}</h3>
+                                <p>От {{$skills_price[$item][0]}}р. / час</p>
+                            </div>
+                        <?php $i++; ?>
+                        @endif
+                    @endforeach
                 </div>
                 <div class="directions__content">
                     <div class="directions__content-img">
-                        <div><img src="/images/directions.png" alt=""></div>
+                        <div><img src="/uploads/images/@if($skills){{$skills->obloshka}}@endif" alt=""></div>
+                    </div>
+                    <div class="my-track_list">
+                        @if ($user_tracks != null)
+                            @foreach ($user_tracks as $track)
+                                <div class="track-item">
+                                    <div class="play_track" data-track-play="/uploads/tracks/{{ $track->url }}"></div>
+                                    <div class="track_name">{{ $track->name }}</div>
+                                    <div class="time_track">{{ $track->duration }}</div>
+                                </div>
+                            @endforeach
+                        @endif
+                        <audio id="play_player" controls="" class="none" preload="metadata">
+                            <source id="play_player_src" src="">
+                        </audio>
                     </div>
                     <p class="directions__content-text">
-                        Отличный мастер ! Руки откуда надо ,необходимые инструменты наличии! Качественно и быстро устранил засор я очень довольна. Отличный мастер ! Руки откуда надо,
+                        @if($skills){{$skills->text_albom}}@endif
                     </p>
                 </div>
             </div>
         </div>
-    </section>
-    <section class="event-slider">
-        <h2 class='simple-sub-title'>Другие мероприятия организатора</h2>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="event-item">
-                        <div class="event-item__img">
-                            <img src="/images/event-img1.png" alt="">
-                        </div>
+    </section>@endif
 
-                        <div class="event-item__content">
-                            <div class="event-item__date">
-                                <span>пн</span>
-                                <p>13</p>
-                                <span>авг</span>
-                            </div>
-                            <div class="event-item__info">
-                                <span class="event-item__type">фестиваль</span>
-                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
-                                <p class="event-item__time">с 14:30 до 18:00</p>
-                                <p class="event-item__place">Chorcha Entertainment</p>
-                            </div>
-                        </div>
-                        <div class="event-item__bot">
-                            <div class="event-item__who">
-                                <span>гитаристы</span>
-                                <span>рэперы</span>
-                                <span>ведущие</span>
-                            </div>
-                            <div class="event-item__places">3 места</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="event-item">
-                        <div class="event-item__img">
-                            <img src="/images/event-img1.png" alt="">
-                        </div>
-
-                        <div class="event-item__content">
-                            <div class="event-item__date">
-                                <span>пн</span>
-                                <p>13</p>
-                                <span>авг</span>
-                            </div>
-                            <div class="event-item__info">
-                                <span class="event-item__type">фестиваль</span>
-                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
-                                <p class="event-item__time">с 14:30 до 18:00</p>
-                                <p class="event-item__place">Chorcha Entertainment</p>
-                            </div>
-                        </div>
-                        <div class="event-item__bot">
-                            <div class="event-item__who">
-                                <span>гитаристы</span>
-                                <span>рэперы</span>
-                                <span>ведущие</span>
-                            </div>
-                            <div class="event-item__places">3 места</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="event-item">
-                        <div class="event-item__img">
-                            <img src="/images/event-img1.png" alt="">
-                        </div>
-
-                        <div class="event-item__content">
-                            <div class="event-item__date">
-                                <span>пн</span>
-                                <p>13</p>
-                                <span>авг</span>
-                            </div>
-                            <div class="event-item__info">
-                                <span class="event-item__type">фестиваль</span>
-                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
-                                <p class="event-item__time">с 14:30 до 18:00</p>
-                                <p class="event-item__place">Chorcha Entertainment</p>
-                            </div>
-                        </div>
-                        <div class="event-item__bot">
-                            <div class="event-item__who">
-                                <span>гитаристы</span>
-                                <span>рэперы</span>
-                                <span>ведущие</span>
-                            </div>
-                            <div class="event-item__places">3 места</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="event-item">
-                        <div class="event-item__img">
-                            <img src="/images/event-img1.png" alt="">
-                        </div>
-
-                        <div class="event-item__content">
-                            <div class="event-item__date">
-                                <span>пн</span>
-                                <p>13</p>
-                                <span>авг</span>
-                            </div>
-                            <div class="event-item__info">
-                                <span class="event-item__type">фестиваль</span>
-                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
-                                <p class="event-item__time">с 14:30 до 18:00</p>
-                                <p class="event-item__place">Chorcha Entertainment</p>
-                            </div>
-                        </div>
-                        <div class="event-item__bot">
-                            <div class="event-item__who">
-                                <span>гитаристы</span>
-                                <span>рэперы</span>
-                                <span>ведущие</span>
-                            </div>
-                            <div class="event-item__places">3 места</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="event-item">
-                        <div class="event-item__img">
-                            <img src="/images/event-img1.png" alt="">
-                        </div>
-
-                        <div class="event-item__content">
-                            <div class="event-item__date">
-                                <span>пн</span>
-                                <p>13</p>
-                                <span>авг</span>
-                            </div>
-                            <div class="event-item__info">
-                                <span class="event-item__type">фестиваль</span>
-                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
-                                <p class="event-item__time">с 14:30 до 18:00</p>
-                                <p class="event-item__place">Chorcha Entertainment</p>
-                            </div>
-                        </div>
-                        <div class="event-item__bot">
-                            <div class="event-item__who">
-                                <span>гитаристы</span>
-                                <span>рэперы</span>
-                                <span>ведущие</span>
-                            </div>
-                            <div class="event-item__places">3 места</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
     <section class="reviews-slider">
-        <h2 class="simple-sub-title simple-sub-title--link">Отзывы об организаторе
+        <h2 class="simple-sub-title simple-sub-title--link">Отзывы
             <div class="select">
                 <div class="select__value">Все направления</div>
                 <div class="select__variants">
@@ -507,6 +332,158 @@
             </div>
         </div>
 
+    </section>
+    <section class="event-slider">
+        <h2 class='simple-sub-title'>Ближайшие мероприятия</h2>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="event-item">
+                        <div class="event-item__img">
+                            <img src="/images/event-img1.png" alt="">
+                        </div>
+
+                        <div class="event-item__content">
+                            <div class="event-item__date">
+                                <span>пн</span>
+                                <p>13</p>
+                                <span>авг</span>
+                            </div>
+                            <div class="event-item__info">
+                                <span class="event-item__type">фестиваль</span>
+                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
+                                <p class="event-item__time">с 14:30 до 18:00</p>
+                                <p class="event-item__place">Chorcha Entertainment</p>
+                            </div>
+                        </div>
+                        <div class="event-item__bot">
+                            <div class="event-item__who">
+                                <span>гитаристы</span>
+                                <span>рэперы</span>
+                                <span>ведущие</span>
+                            </div>
+                            <div class="event-item__places">3 места</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="event-item">
+                        <div class="event-item__img">
+                            <img src="/images/event-img1.png" alt="">
+                        </div>
+
+                        <div class="event-item__content">
+                            <div class="event-item__date">
+                                <span>пн</span>
+                                <p>13</p>
+                                <span>авг</span>
+                            </div>
+                            <div class="event-item__info">
+                                <span class="event-item__type">фестиваль</span>
+                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
+                                <p class="event-item__time">с 14:30 до 18:00</p>
+                                <p class="event-item__place">Chorcha Entertainment</p>
+                            </div>
+                        </div>
+                        <div class="event-item__bot">
+                            <div class="event-item__who">
+                                <span>гитаристы</span>
+                                <span>рэперы</span>
+                                <span>ведущие</span>
+                            </div>
+                            <div class="event-item__places">3 места</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="event-item">
+                        <div class="event-item__img">
+                            <img src="/images/event-img1.png" alt="">
+                        </div>
+
+                        <div class="event-item__content">
+                            <div class="event-item__date">
+                                <span>пн</span>
+                                <p>13</p>
+                                <span>авг</span>
+                            </div>
+                            <div class="event-item__info">
+                                <span class="event-item__type">фестиваль</span>
+                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
+                                <p class="event-item__time">с 14:30 до 18:00</p>
+                                <p class="event-item__place">Chorcha Entertainment</p>
+                            </div>
+                        </div>
+                        <div class="event-item__bot">
+                            <div class="event-item__who">
+                                <span>гитаристы</span>
+                                <span>рэперы</span>
+                                <span>ведущие</span>
+                            </div>
+                            <div class="event-item__places">3 места</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="event-item">
+                        <div class="event-item__img">
+                            <img src="/images/event-img1.png" alt="">
+                        </div>
+
+                        <div class="event-item__content">
+                            <div class="event-item__date">
+                                <span>пн</span>
+                                <p>13</p>
+                                <span>авг</span>
+                            </div>
+                            <div class="event-item__info">
+                                <span class="event-item__type">фестиваль</span>
+                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
+                                <p class="event-item__time">с 14:30 до 18:00</p>
+                                <p class="event-item__place">Chorcha Entertainment</p>
+                            </div>
+                        </div>
+                        <div class="event-item__bot">
+                            <div class="event-item__who">
+                                <span>гитаристы</span>
+                                <span>рэперы</span>
+                                <span>ведущие</span>
+                            </div>
+                            <div class="event-item__places">3 места</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="event-item">
+                        <div class="event-item__img">
+                            <img src="/images/event-img1.png" alt="">
+                        </div>
+
+                        <div class="event-item__content">
+                            <div class="event-item__date">
+                                <span>пн</span>
+                                <p>13</p>
+                                <span>авг</span>
+                            </div>
+                            <div class="event-item__info">
+                                <span class="event-item__type">фестиваль</span>
+                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
+                                <p class="event-item__time">с 14:30 до 18:00</p>
+                                <p class="event-item__place">Chorcha Entertainment</p>
+                            </div>
+                        </div>
+                        <div class="event-item__bot">
+                            <div class="event-item__who">
+                                <span>гитаристы</span>
+                                <span>рэперы</span>
+                                <span>ведущие</span>
+                            </div>
+                            <div class="event-item__places">3 места</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     @include('blocks.features')
 @endsection

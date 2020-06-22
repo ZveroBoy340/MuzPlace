@@ -44,7 +44,7 @@
                 </nav>
                 @auth
                     <div class="user-profiles">
-                        <a href="{{ route('home') }}"><img @if (Auth::user()->avatar  != null) src="/uploads/avatars/{{ Auth::user()->avatar }}" @else src="img/user_ava.png" @endif alt=""> <span>{{ Auth::user()->name }}</span></a>
+                        <a href="{{ route('home') }}"><img @if (Auth::user()->avatar  != null) src="/uploads/avatars/{{ Auth::user()->avatar }}" @else src="/img/user_ava.png" @endif alt=""> <span>{{ Auth::user()->name }}</span></a>
                     </div>
                     <a class="header__login header__login--logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -29,7 +29,54 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('lk.events');
+        $id = Auth::user()->id;
+        $my_proposals_check = [];
+        $my_proposals_accept = [];
+        $proposals_check_date = [];
+        $proposals_accept_date = [];
+        $proposals_count = [];
+
+        $my_events = DB::table('events')->where('user_id', $id)->get();
+        if ($my_events) {
+            foreach ($my_events as $item => $key) {
+                $my_events_data[] = json_decode($key->data, true);
+            }
+            foreach ($my_events as $item => $key) {
+                $proposal_event = DB::table('users_proposal')->where('event_id', $key->id)->where('status', 'check')->get();
+                $proposals_count[] = count($proposal_event);
+            }
+        }
+
+        $my_proposals = DB::table('users_proposal')->where('user_id', $id)->get();
+        if ($my_proposals) {
+            foreach ($my_proposals as $item => $key) {
+                if ($key->status == 'check') {
+                    $my_proposals_check[$key->id][] = DB::table('events')->where('id', $key->event_id)->get();
+                }
+                elseif ($key->status == 'accept') {
+                    $my_proposals_accept[$key->id][] = DB::table('events')->where('id', $key->event_id)->get();
+                }
+            }
+            foreach ($my_proposals_check as $item => $key) {
+                $proposals_check_date[$item][] = json_decode($key[0][0]->data, true);
+            }
+            foreach ($my_proposals_accept as $item => $key) {
+                $proposals_accept_date[$item][] = json_decode($key[0][0]->data, true);
+            }
+        }
+
+        $end_my_events = count ($my_events_data) - 1;
+
+        return view('lk.events', [
+            'my_events' => $my_events,
+            'my_events_data' => $my_events_data,
+            'end_my_events' => $end_my_events,
+            'my_proposals_check' => $my_proposals_check,
+            'my_proposals_accept' => $my_proposals_accept,
+            'proposals_check_date' => $proposals_check_date,
+            'proposals_accept_date' => $proposals_accept_date,
+            'proposals_count' => $proposals_count
+        ]);
     }
 
     public function messages()
@@ -60,27 +107,43 @@ class HomeController extends Controller
         $available_genres = Genres::orderBy('id', 'asc')->where('status', '=', 1)->get();
 
         $user_skills = DB::table('users_skills')->where('user_id', $id)->first();
-        $user_tracks = DB::table('user_tracks')->where('user_id', $id)->get();
 
-        $status_skill = json_decode($user_skills->skills_id, true);
-        $price_skill = json_decode($user_skills->prices, true);
-        $genre_user = json_decode($user_skills->genre_id, true);
+        if ($user_skills != null) {
+            $user_tracks = DB::table('user_tracks')->where('user_id', $id)->get();
 
-        $current_genre = $user_skills->current_genre;
-        $text_albom = $user_skills->text_albom;
-        $obloshka = $user_skills->obloshka;
+            $status_skill = json_decode($user_skills->skills_id, true);
+            $price_skill = json_decode($user_skills->prices, true);
+            $genre_user = json_decode($user_skills->genre_id, true);
 
-        return view('lk.skills', [
-            'available_skills' => $available_skills,
-            'available_genres' => $available_genres,
-            'genre_user' => $genre_user,
-            'user_tracks' => $user_tracks,
-            'status_skill' => $status_skill,
-            'current_genre' => $current_genre,
-            'obloshka' => $obloshka,
-            'text_albom' => $text_albom,
-            'price_skill' => $price_skill
-        ]);
+            $current_genre = $user_skills->current_genre;
+            $text_albom = $user_skills->text_albom;
+            $obloshka = $user_skills->obloshka;
+
+            return view('lk.skills', [
+                'available_skills' => $available_skills,
+                'available_genres' => $available_genres,
+                'genre_user' => $genre_user,
+                'user_tracks' => $user_tracks,
+                'status_skill' => $status_skill,
+                'current_genre' => $current_genre,
+                'obloshka' => $obloshka,
+                'text_albom' => $text_albom,
+                'price_skill' => $price_skill
+            ]);
+        }
+        else {
+            return view('lk.skills', [
+                'available_skills' => $available_skills,
+                'available_genres' => $available_genres,
+                'genre_user' => null,
+                'user_tracks' => null,
+                'status_skill' => null,
+                'current_genre' => null,
+                'obloshka' => null,
+                'text_albom' => null,
+                'price_skill' => null
+            ]);
+        }
     }
 
     public function create()
@@ -253,5 +316,261 @@ class HomeController extends Controller
         }
 
         return redirect('/lk-skills/');
+    }
+
+    public function create_event(Request $request) {
+        $id = Auth::user()->id;
+
+        $date = json_encode($request->input('date'));
+        $artist_type = json_encode($request->input('artist_type'));
+        $artist_genre = json_encode($request->input('artist_genre'));
+        $artist_date = json_encode($request->input('artist_date'));
+        $artist_wish = json_encode($request->input('artist_wish'));
+        $dop_option = json_encode($request->input('dop_option'));
+
+        if ($request->hasFile('cover')) {
+            $cover = $request->file('cover');
+            $name_cover = time().'.'.$cover->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/images/');
+            $cover->move($destinationPath, $name_cover);
+        }
+
+        if ($request->hasFile('dogovor')) {
+            $dogovor = $request->file('dogovor');
+            $name_dogovor = time().'.'.$dogovor->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/documents/');
+            $dogovor->move($destinationPath, $name_dogovor);
+        }
+
+        DB::table('events')->insert([
+            'user_id' => $id,
+            'name' => $request->input('name'),
+            'description' => $request->input('description'),
+            'cover' => $name_cover,
+            'data' => $date,
+            'type' => $request->input('type'),
+            'place' => $request->input('place'),
+            'people' => $request->input('people'),
+            'artist_type' => $artist_type,
+            'artist_genre' => $artist_genre,
+            'artist_date' => $artist_date,
+            'artist_wish' => $artist_wish,
+            'payment' => $request->input('payment'),
+            'payment_method' => $request->input('payment_method'),
+            'payment_condition' => $request->input('payment_condition'),
+            'instruments' => $request->input('instruments'),
+            'dogovor' => $name_dogovor,
+            'dop_option' => $dop_option,
+            'additional_conditions' => $request->input('additional_conditions'),
+            'status' => "check"
+        ]);
+
+        return redirect('/lk-events');
+    }
+
+    public function edit_event($event_id) {
+
+        $id = Auth::user()->id;
+
+        $data_event = DB::table('events')->where('user_id', $id)->where('id', $event_id)->first();
+        if ($data_event) {
+
+            $type_event = DB::table('skills')->where('id', $data_event->type)->first();
+            $skills = DB::table('genres')->get();
+
+            $event_data = json_decode($data_event->data, true);
+            $dop_option = json_decode($data_event->dop_option, true);
+
+            $artist_type = json_decode($data_event->artist_type, true);
+            $artist_genre = json_decode($data_event->artist_genre, true);
+            $artist_date = json_decode($data_event->artist_date, true);
+            $artist_wish = json_decode($data_event->artist_wish, true);
+
+            $count_data = count ($event_data) - 1;
+            $count_artist = count ($artist_type) - 1;
+
+            return view('lk.edit-event', [
+                'event_data' => $data_event,
+                'count_data' => $count_data,
+                'type_event' => $type_event,
+                'dop_option' => $dop_option,
+                'artist_type' => $artist_type,
+                'artist_genre' => $artist_genre,
+                'artist_date' => $artist_date,
+                'artist_wish' => $artist_wish,
+                'count_artist' => $count_artist,
+                'skills' => $skills,
+                'data' => $event_data
+            ]);
+
+        }
+        else {
+            return redirect('/lk-events');
+        }
+    }
+
+    public function update_event(Request $request, $event_id) {
+        $id = Auth::user()->id;
+
+        if ($request->hasFile('cover')) {
+            $cover = $request->file('cover');
+            $name_cover = time().'.'.$cover->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/images/');
+            $cover->move($destinationPath, $name_cover);
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['cover' => $name_cover]);
+        }
+
+        if ($request->hasFile('dogovor')) {
+            $dogovor = $request->file('dogovor');
+            $name_dogovor = time().'.'.$dogovor->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/documents/');
+            $dogovor->move($destinationPath, $name_dogovor);
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['dogovor' => $name_dogovor]);
+        }
+
+        if ($request->input('name')) {
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['name' => $request->input('name')]);
+        }
+
+        if ($request->input('description')) {
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['description' => $request->input('description')]);
+        }
+
+        if ($request->input('type')) {
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['type' => $request->input('type')]);
+        }
+
+        if ($request->input('date')) {
+            $date = json_encode($request->input('date'));
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['data' => $date]);
+        }
+
+        if ($request->input('artist_type')) {
+            $artist_type = json_encode($request->input('artist_type'));
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['artist_type' => $artist_type]);
+        }
+
+        if ($request->input('artist_genre')) {
+            $artist_genre = json_encode($request->input('artist_genre'));
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['artist_genre' => $artist_genre]);
+        }
+
+        if ($request->input('artist_date')) {
+            $artist_date = json_encode($request->input('artist_date'));
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['artist_date' => $artist_date]);
+        }
+
+        if ($request->input('artist_wish')) {
+            $artist_wish = json_encode($request->input('artist_wish'));
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['artist_wish' => $artist_wish]);
+        }
+
+        if ($request->input('dop_option')) {
+            $dop_option = json_encode($request->input('dop_option'));
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['dop_option' => $dop_option]);
+        }
+
+        if ($request->input('place')) {
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['place' => $request->input('place')]);
+        }
+
+        if ($request->input('people')) {
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['people' => $request->input('people')]);
+        }
+
+        if ($request->input('payment')) {
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['payment' => $request->input('payment')]);
+        }
+
+        if ($request->input('payment_method')) {
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['payment_method' => $request->input('payment_method')]);
+        }
+
+        if ($request->input('payment_condition')) {
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['payment_condition' => $request->input('payment_condition')]);
+        }
+
+        if ($request->input('additional_conditions')) {
+            DB::table('events')->where('user_id', $id)->where('id', $event_id)->update(['additional_conditions' => $request->input('additional_conditions')]);
+        }
+
+        return redirect('/lk-events');
+    }
+    public function delete_event($event_id) {
+        $id = Auth::user()->id;
+        $event = DB::table('events')->where('user_id', $id)->where('id', $event_id)->delete();
+
+        return redirect('/lk-events');
+    }
+    public function event_proposals($event_id) {
+        $id = Auth::user()->id;
+
+        $event = DB::table('events')->where('user_id', $id)->where('id', $event_id)->first();
+        $proposals = DB::table('users_proposal')->where('owner_id', $id)->where('event_id', $event_id)->where('status', 'check')->paginate(2);
+
+        $users_data = null;
+        $proposals_id = [0];
+
+        if (!empty($proposals)) {
+            foreach ($proposals as $item => $key) {
+                $proposals_id[] = json_decode($key->user_id, true);
+            }
+            $users_data = DB::table('users')->whereIn('id', $proposals_id)->get();
+            $users_data = json_decode($users_data, true);
+        }
+
+        return view('lk.proposal-events', [
+            'event' => $event,
+            'users_data' => $users_data,
+            'proposals' => $proposals
+        ]);
+    }
+
+    public function accept_proposal($id, $proposal) {
+        $owner = Auth::user()->id;
+
+        DB::table('users_proposal')->where('event_id', $id)->where('id', $proposal)->where('owner_id', $owner)->update(['status' => 'accept']);
+
+        return redirect()->back();
+    }
+
+    public function delete_proposal($id, $proposal) {
+        $owner = Auth::user()->id;
+
+        DB::table('users_proposal')->where('event_id', $id)->where('id', $proposal)->where('owner_id', $owner)->delete();
+
+        return redirect()->back();
+    }
+
+    public function delete_proposal_user($proposal) {
+        $id = Auth::user()->id;
+
+        DB::table('users_proposal')->where('user_id', $id)->where('id', $proposal)->delete();
+
+        return redirect()->back();
+    }
+
+    public function event_users($event_id) {
+        $id = Auth::user()->id;
+
+        $event = DB::table('events')->where('user_id', $id)->where('id', $event_id)->first();
+        $proposals = DB::table('users_proposal')->where('owner_id', $id)->where('event_id', $event_id)->where('status', 'accept')->paginate(2);
+
+        $users_data = null;
+        $proposals_id = [];
+
+        if (!empty($proposals)) {
+            foreach ($proposals as $item => $key) {
+                $proposals_id[] = json_decode($key->user_id, true);
+            }
+            $users_data = DB::table('users')->whereIn('id', $proposals_id)->get();
+            $users_data = json_decode($users_data, true);
+        }
+
+        return view('lk.users-events', [
+            'event' => $event,
+            'users_data' => $users_data,
+            'proposals' => $proposals
+        ]);
     }
 }

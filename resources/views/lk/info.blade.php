@@ -37,7 +37,7 @@
                                 <p class="inputs__wrap-title">Пол</p>
                                 <div class="gender-radio">
                                     <input type="radio" id="man" name="gender" value="man" @if (Auth::user()->gender  == "man") checked @endif >
-                                    <label for="contactChoice1">Мужской</label>
+                                    <label for="man">Мужской</label>
                                     <input type="radio" id="girl" name="gender" value="woman" @if (Auth::user()->gender  == "woman") checked @endif >
                                     <label for="girl">Женский</label>
                                 </div>
