@@ -16,18 +16,38 @@
                     <span></span>
                 </div>
             </div>
-            <form action="/event-form" method="post" enctype="multipart/form-data" class="inputs inputs--small">
+            <form action="/event-form" method="post" id="submit-create-event" enctype="multipart/form-data" class="inputs inputs--small">
                 @csrf
                 <div class="create__columns active" id="create_event_1">
                     <div class="create__column">
                         <h3 class="create__column-title">Описание</h3>
                         <div class="inputs__wrap">
+                            <p class="inputs__title">Выберите город</p>
+                            <select name="city" id="city-list" class="events-city" required>
+                                <option value="Москва" @if (Auth::user()->city  == "Москва") selected @endif>Москва</option>
+                                <option value="Санкт-Петербург" @if (Auth::user()->city  == "Санкт-Петербург") selected @endif>Санкт-Петербург</option>
+                                <option value="Новосибирск" @if (Auth::user()->city  == "Новосибирск") selected @endif>Новосибирск</option>
+                                <option value="Екатеринбург" @if (Auth::user()->city  == "Екатеринбург") selected @endif>Екатеринбург</option>
+                                <option value="Нижний" @if (Auth::user()->city  == "Нижний") selected @endif>Нижний</option>
+                                <option value="Новгород" @if (Auth::user()->city  == "Новгород") selected @endif>Новгород</option>
+                                <option value="Челябинск" @if (Auth::user()->city  == "Челябинск") selected @endif>Челябинск</option>
+                                <option value="Самара" @if (Auth::user()->city  == "Самара") selected @endif>Самара</option>
+                                <option value="Омск" @if (Auth::user()->city  == "Омск") selected @endif>Омск</option>
+                                <option value="Ростов-на-Дону" @if (Auth::user()->city  == "Ростов-на-Дону") selected @endif>Ростов-на-Дону</option>
+                                <option value="Уфа" @if (Auth::user()->city  == "Уфа") selected @endif>Уфа</option>
+                                <option value="Красноярск" @if (Auth::user()->city  == "Красноярск") selected @endif>Красноярск</option>
+                                <option value="Воронеж" @if (Auth::user()->city  == "Воронеж") selected @endif>Воронеж</option>
+                                <option value="Пермь" @if (Auth::user()->city  == "Пермь") selected @endif>Пермь</option>
+                                <option value="Волгоград" @if (Auth::user()->city  == "Волгоград") selected @endif>Волгоград</option>
+                            </select>
+                        </div>
+                        <div class="inputs__wrap">
                             <p class="inputs__title">Название</p>
-                            <input type="text" name="name" required>
+                            <input type="text" name="name" id="name-event" required>
                         </div>
                         <div class="inputs__wrap">
                             <p class="inputs__title">Краткое описание</p>
-                            <textarea name="description" cols="30" rows="10" required></textarea>
+                            <textarea name="description" cols="30" rows="10" id="description-event"></textarea>
                         </div>
                         <div class="inputs__wrap">
                             <p class="inputs__title">Обложка</p>
@@ -39,20 +59,20 @@
                             </label>
                         </div>
                     </div>
-                    <div class="create__column firts-date">
+                    <div class="create__column firts-date dates-creates">
                         <h3 class="create__column-title">Дата и время</h3>
                         <div class="inputs__inputs" id="date-event_0">
                             <div class="inputs__wrap">
                                 <p class="inputs__title">Дата</p>
-                                <input type="date" name="date[0][]" class="date-input artiste" data-date="0">
+                                <input type="text" name="date[0][]" class="date-input artiste datepicker-here" value="00.00.0000" placeholder="Дата" data-date="0">
                             </div>
                             <div class="inputs__wrap">
                                 <p class="inputs__title">C</p>
-                                <input type="time" name="date[0][]" class="date-input">
+                                <input type="text" name="date[0][]" id="demo1" value="00:00" class="date-input times">
                             </div>
                             <div class="inputs__wrap">
                                 <p class="inputs__title">До</p>
-                                <input type="time" name="date[0][]" class="date-input">
+                                <input type="text" name="date[0][]" value="00:00" class="date-input times">
                             </div>
                         </div>
                         <a class="add_date_event dates" data-events="0">Добавить дату</a>
@@ -64,28 +84,14 @@
                             <div class="select">
                                 <div class="select__value">Концерт</div>
                                 <div class="select__variants">
-                                    <label for="type_1" class="select__variant select__variant--active"><span>Концерт</span></label>
-                                    <label for="type_2" class="select__variant"><span>Корпоратив</span></label>
-                                    <label for="type_3" class="select__variant"><span>Музыкальный фестиваль</span></label>
-                                    <label for="type_4" class="select__variant"><span>Рэп-батл</span></label>
-                                    <label for="type_5" class="select__variant"><span>Детский праздник</span></label>
-                                    <label for="type_6" class="select__variant"><span>Джем-сейшн</span></label>
-                                    <label for="type_7" class="select__variant"><span>Квартирник</span></label>
-                                    <label for="type_8" class="select__variant"><span>Бал</span></label>
-                                    <label for="type_9" class="select__variant"><span>Open air</span></label>
-                                    <label for="type_10" class="select__variant"><span>Другое</span></label>
+                                    @foreach ($types as $type)
+                                    <label for="type_{{$type->id}}" class="select__variant @if ($type->id == 1) select__variant--active @endif "><span>{{$type->name}}</span></label>
+                                    @endforeach
                                 </div>
                                 <div class="radio-elements none">
-                                    <input type="radio" name="type" id="type_1" value="1" checked>
-                                    <input type="radio" name="type" id="type_2" value="2">
-                                    <input type="radio" name="type" id="type_3" value="3">
-                                    <input type="radio" name="type" id="type_4" value="4">
-                                    <input type="radio" name="type" id="type_5" value="5">
-                                    <input type="radio" name="type" id="type_6" value="6">
-                                    <input type="radio" name="type" id="type_7" value="7">
-                                    <input type="radio" name="type" id="type_8" value="8">
-                                    <input type="radio" name="type" id="type_9" value="9">
-                                    <input type="radio" name="type" id="type_10" value="10">
+                                    @foreach ($types as $type)
+                                    <input type="radio" name="type" id="type_{{$type->id}}" value="{{$type->id}}" @if ($type->id == 1) checked @endif>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -156,38 +162,14 @@
                             <div class="select genre_artist">
                                 <div class="select__value">Авторский</div>
                                 <div class="select__variants">
-                                    <label for="artist_genre[0]_0" class="select__variant select__variant--active"><span>Авторский</span></label>
-                                    <label for="artist_genre[0]_1" class="select__variant"><span>Блатной</span></label>
-                                    <label for="artist_genre[0]_2" class="select__variant"><span>Блюз</span></label>
-                                    <label for="artist_genre[0]_3" class="select__variant"><span>Джаз</span></label>
-                                    <label for="artist_genre[0]_4" class="select__variant"><span>Диско</span></label>
-                                    <label for="artist_genre[0]_5" class="select__variant"><span>Индийский</span></label>
-                                    <label for="artist_genre[0]_6" class="select__variant"><span>Кантри</span></label>
-                                    <label for="artist_genre[0]_7" class="select__variant"><span>Латино</span></label>
-                                    <label for="artist_genre[0]_8" class="select__variant"><span>Народная</span></label>
-                                    <label for="artist_genre[0]_9" class="select__variant"><span>Рок</span></label>
-                                    <label for="artist_genre[0]_10" class="select__variant"><span>Романс</span></label>
-                                    <label for="artist_genre[0]_11" class="select__variant"><span>Ска</span></label>
-                                    <label for="artist_genre[0]_12" class="select__variant"><span>Хип-Хоп</span></label>
-                                    <label for="artist_genre[0]_13" class="select__variant"><span>Шансон</span></label>
-                                    <label for="artist_genre[0]_14" class="select__variant"><span>Электронная</span></label>
+                                    @foreach ($genres as $genre)
+                                    <label for="artist_genre[0]_{{$genre->id}}" class="select__variant @if ($genre->id == 1) select__variant--active @endif"><span>{{$genre->name}}</span></label>
+                                    @endforeach
                                 </div>
                                 <div class="radio-elements none">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_0" value="0" checked="checked">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_1" value="1">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_2" value="2">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_3" value="3">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_4" value="4">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_5" value="5">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_6" value="6">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_7" value="7">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_8" value="8">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_9" value="9">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_10" value="10">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_11" value="11">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_12" value="12">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_13" value="13">
-                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_14" value="14">
+                                    @foreach ($genres as $genre)
+                                    <input type="radio" name="artist_genre[0][]" id="artist_genre[0]_{{$genre->id}}" value="{{$genre->id}}" @if ($genre->id == 1) checked="checked" @endif>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -339,7 +321,7 @@
                     </div>
                     <div class="create__btn">
                         <a class="btn btn-black event-page-2">Назад</a>
-                        <button type="submit" class="btn">Создать</button>
+                        <a id="create-event" class="btn">Создать</a>
                     </div>
                 </div>
             </form>

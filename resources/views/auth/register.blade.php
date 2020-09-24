@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>Регистрация - MuzPlace</title>
+@endsection
+
 @section('content')
     <div class="autorization">
         <div class="guest-register">
@@ -16,7 +20,15 @@
                 <form method="POST" action="{{ route('register') }}" class="login-user">
                     @csrf
                     <div class="input-field">
-                        <input id="email" type="text" class="login-field @error('email') is-invalid @enderror" placeholder="Телефон или E-mail" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        <input id="login" type="text" class="login-field @error('login') is-invalid @enderror" placeholder="Логин" name="login" value="{{ old('login') }}" required>
+                        @error('login')
+                        <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="input-field">
+                        <input id="email" type="text" class="login-field @error('email') is-invalid @enderror" placeholder="E-mail" name="email" value="{{ old('email') }}" required>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -24,7 +36,7 @@
                         @enderror
                     </div>
                     <div class="input-field">
-                        <input type="password" class="login-field @error('password') is-invalid @enderror" placeholder="Пароль"  name="password" required autocomplete="new-password">
+                        <input type="password" class="login-field @error('password') is-invalid @enderror" placeholder="Пароль"  name="password" required>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -41,4 +53,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('custom_scripts')
+    <script>
+        var status = "{{ old('status') }}";
+
+        if (status == "artist") {
+            $("#organizator").removeClass('active');
+            $("#artist").addClass('active');
+            $("#status").val('artist');
+        }
+    </script>
 @endsection

@@ -8,8 +8,9 @@
     <section class="event-top">
         <div class="center-wrap">
             <h1 class='event-top__title'>{{$event->name}}</h1>
-            <p class="event-top__date">{{ Date::parse($data[0][0])->format('j F') }} <span>(через {{Carbon\Carbon::today()->diffInDays($data[0][0], false)}} дней)</span></p>
-            <p class="event-top__lead"><span>Организатор</span> {{$user->login}}</p>
+            <p class="event-top__date"> @foreach($data as $counter => $date) @if(strtotime($date[0]) > strtotime(date("d.m.Y"))) {{ Date::parse($date[0])->format('j F') }} <span>@if (Carbon\Carbon::today()->diffInDays($date[0], false) != 0)(через {{Carbon\Carbon::today()->diffInDays($date[0], false)}} @if (Carbon\Carbon::today()->diffInDays($date[0], false) == 1)день) @endif @if (Carbon\Carbon::today()->diffInDays($date[0], false) > 1 && Carbon\Carbon::today()->diffInDays($date[0], false) < 5)дня) @elseif(Carbon\Carbon::today()->diffInDays($date[0], false) > 4 || Carbon\Carbon::today()->diffInDays($date[0], false) < 0 ) дней) @endif @else (сегодня) @endif</span> @break @endif @endforeach</p>
+            <p class="event-top__lead city_toper"><span>Город</span> {{$user->city}}</p>
+            <p class="event-top__lead"><span>Организатор</span> <a href="/artist/{{$user->id}}">{{$user->login}}</a></p>
         </div>
     </section>
     <section class="info-cont">
@@ -22,16 +23,20 @@
                 <p class="info-cont__tag">Оригинальный жанр-группа</p>
             </div>--}}
             <div class="info-cont__contacts">
+                @if ($user->phone)
                 <div class="info-cont__contacts-item">
                     <a id="none_phone">+7 XXX XXX-XX-XX</a>
                     <a id="show_phone" class="none">{{ $user->phone }}</a>
                     <span id="btn_phone_show">Показать телефон</span>
                 </div>
+                @endif
+                @if ($user->email)
                 <div class="info-cont__contacts-item">
                     <a id="none_email">XXXXXXX{{ '@'.$email_domain }}</a>
                     <a id="show_email" class="none">{{ $user->email }}</a>
                     <span id="btn_email_show">Показать email</span>
                 </div>
+                @endif
                 <div class="socials socials--info-cont">
                     @if ($user->facebook != null)
                         <a href="{{ $user->facebook }}" class="socials__item">
@@ -97,16 +102,18 @@
                     <div class="info-item">Предоплата:<br>{{$event->payment_condition}}</div>
                     <div class="info-item">Должен иметь свое оборудование:<br>{{$event->instruments}}</div>
                 </div>
-                <div class="item-trebovania">Дополнительно:
-                    <ul>
-                        @foreach ($dop_option as $item => $key)
-                            <li>{{$key}}</li>
-                        @endforeach
-                    </ul>
-                </div>
+                @if ($dop_option != null)
+                    <div class="item-trebovania">Дополнительно:
+                        <ul>
+                            @foreach ($dop_option as $item => $key)
+                                <li>{{$key}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="item-trebovania">
                     @if ($event->additional_conditions)<div class="info-item">Дополнительные условия:<br>{{$event->additional_conditions}}</div>@endif
-                    <div class="info-item">Договор:<br><a href="/uploads/documents/{{$event->dogovor}}">Ознакомиться с договором</a></div>
+                    <div class="info-item">Договор:<br>@if ($event->dogovor != null)<a href="/uploads/documents/{{$event->dogovor}}">Ознакомиться с договором</a> @else Документы не добавлены @endif</div>
                 </div>
             </div>
         </div>
@@ -116,31 +123,37 @@
             <h2 class="need__title">Нам нужны</h2>
             <div class="need__lists">
                 @foreach ($data as $item => $key)
+                    @if (strtotime($key[0]) >= strtotime(date('d.m.Y')))
                     <h3 class="need__lists-title"><span>{{ Date::parse($key[0])->format('j F') }}</span> с {{$key[1]}} до {{$key[2]}}</h3>
                     <div class="need__list">
                         @foreach ($artist_date as $number => $artist)
                             @if ($artist[0] == $item)
-                                @if ($event_users[$number] > count($data) && $event_users_data[$number] == $item)
+                                @if ($all_date[$number] == 'yes')
                                     <div class="need__item need__item--fill">
                                         <div class="need__item-img">
-                                            <img src="/uploads/avatars/{{$users_data[$event_users[$number]]['avatar']}}" alt="">
+                                            <img @if ($find_users[$number]['avatar']) src="/uploads/avatars/{{$find_users[$number]['avatar']}}" @else src="/images/artist.png" @endif alt="">
                                             <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M16.586 3.8147e-06H19V2H17.414L13.166 6.242C12.7958 5.68302 12.317 5.20419 11.758 4.834L16.586 3.8147e-06ZM9 5C9.97224 5.00186 10.9105 5.35775 11.6394 6.00114C12.3683 6.64453 12.8379 7.53137 12.9605 8.49585C13.083 9.46034 12.8501 10.4364 12.3052 11.2417C11.7604 12.0469 10.9409 12.6261 10 12.871V13C10 13.9889 9.70676 14.9556 9.15735 15.7779C8.60794 16.6001 7.82705 17.241 6.91342 17.6194C5.99979 17.9978 4.99446 18.0969 4.02455 17.9039C3.05465 17.711 2.16373 17.2348 1.46447 16.5355C0.765206 15.8363 0.289002 14.9454 0.0960758 13.9755C-0.0968503 13.0056 0.00216642 12.0002 0.380605 11.0866C0.759043 10.173 1.39991 9.39206 2.22215 8.84266C3.0444 8.29325 4.0111 8 5 8L5.129 8.012C5.34835 7.15148 5.84781 6.38842 6.54868 5.84307C7.24955 5.29773 8.11196 5.00113 9 5ZM9 7.5C8.60218 7.5 8.22065 7.65804 7.93934 7.93934C7.65804 8.22065 7.5 8.60218 7.5 9C7.5 9.39783 7.65804 9.77936 7.93934 10.0607C8.22065 10.342 8.60218 10.5 9 10.5C9.39783 10.5 9.77936 10.342 10.0607 10.0607C10.342 9.77936 10.5 9.39783 10.5 9C10.5 8.60218 10.342 8.22065 10.0607 7.93934C9.77936 7.65804 9.39783 7.5 9 7.5ZM3.937 11.236L3.23 11.943L6.059 14.771L6.766 14.064L3.937 11.236Z" fill="#7A7999"/>
                                             </svg>
                                         </div>
                                         <div class="need__item-info">
                                             <span>участвует</span>
-                                            <a href='/artist/{{$users_data[$event_users[$number]]['id']}}'>{{$users_data[$event_users[$number]]['login']}}</a>
+                                            <a href='/artist/{{$find_users[$number]['user_id']}}'>{{$find_users[$number]['login']}}</a>
                                         </div>
                                     </div>
                                 @else
                                     <div class="need__item">
-                                        <h4 class="need__item-title"><span>{{$available_genres[$artist[0]]['name']}}</span>
-                                            <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M16.586 3.8147e-06H19V2H17.414L13.166 6.242C12.7958 5.68302 12.317 5.20419 11.758 4.834L16.586 3.8147e-06ZM9 5C9.97224 5.00186 10.9105 5.35775 11.6394 6.00114C12.3683 6.64453 12.8379 7.53137 12.9605 8.49585C13.083 9.46034 12.8501 10.4364 12.3052 11.2417C11.7604 12.0469 10.9409 12.6261 10 12.871V13C10 13.9889 9.70676 14.9556 9.15735 15.7779C8.60794 16.6001 7.82705 17.241 6.91342 17.6194C5.99979 17.9978 4.99446 18.0969 4.02455 17.9039C3.05465 17.711 2.16373 17.2348 1.46447 16.5355C0.765206 15.8363 0.289002 14.9454 0.0960758 13.9755C-0.0968503 13.0056 0.00216642 12.0002 0.380605 11.0866C0.759043 10.173 1.39991 9.39206 2.22215 8.84266C3.0444 8.29325 4.0111 8 5 8L5.129 8.012C5.34835 7.15148 5.84781 6.38842 6.54868 5.84307C7.24955 5.29773 8.11196 5.00113 9 5ZM9 7.5C8.60218 7.5 8.22065 7.65804 7.93934 7.93934C7.65804 8.22065 7.5 8.60218 7.5 9C7.5 9.39783 7.65804 9.77936 7.93934 10.0607C8.22065 10.342 8.60218 10.5 9 10.5C9.39783 10.5 9.77936 10.342 10.0607 10.0607C10.342 9.77936 10.5 9.39783 10.5 9C10.5 8.60218 10.342 8.22065 10.0607 7.93934C9.77936 7.65804 9.39783 7.5 9 7.5ZM3.937 11.236L3.23 11.943L6.059 14.771L6.766 14.064L3.937 11.236Z" fill="#7A7999"/>
-                                            </svg>
+                                        <h4 class="need__item-title"><span>{{$available_genres[$artist_genre[$number][0] - 1]['name']}}</span>
                                         </h4>
-                                        <a class="btn" href="/event/{{$event->id}}/{{$event->user_id}}/proposal/{{$item}}/{{$number}}">Оставить заявку</a>
+                                        <span class="type_artist">{{$artist_types[$artist_type[$number][0]]['name']}}</span>
+                                        @if (Auth::check() && Auth::user()->status  == "organizator")
+                                            <a class="btn only-artist">Оставить заявку</a>
+                                        @elseif (Auth::check() && Auth::user()->status  == "artist")
+                                            <a class="btn add-proposal" data-link="/event/{{$event->id}}/{{$event->user_id}}/proposal/{{$item}}/{{$number}}">Оставить заявку</a>
+                                        @else
+                                            <a class="btn" href="/login/">Оставить заявку</a>
+                                        @endif
+
                                     </div>
                                 @endif
                             @endif
@@ -149,10 +162,12 @@
                         <div class="need__item need__item--hide"></div>
                         <div class="need__item need__item--hide"></div>
                     </div>
+                    @endif
                 @endforeach
             </div>
         </div>
     </section>
+    @if (count($owner_events) > 0)
     <section class="event-slider">
         <h2 class='simple-sub-title'>Другие мероприятия организатора</h2>
         <div class="swiper-container">
@@ -161,7 +176,7 @@
                     <div class="swiper-slide">
                         <div class="event-item">
                             <div class="event-item__img">
-                                <img src="/uploads/images/{{$event->cover}}" alt="">
+                                <a href="/event/{{$event->id}}"><img src="/uploads/images/{{$event->cover}}" alt=""></a>
                             </div>
 
                             <div class="event-item__content">
@@ -179,9 +194,9 @@
                             </div>
                             <div class="event-item__bot">
                                 <div class="event-item__who">
-                                    <span>гитаристы</span>
+                                    {{--<span>гитаристы</span>
                                     <span>рэперы</span>
-                                    <span>ведущие</span>
+                                    <span>ведущие</span>--}}
                                 </div>
                                 <div class="event-item__places">{{$places[$id][0]}}@if ($places[$id][0] == 1) место @elseif($places[$id][0] == 2 || $places[$id][0] == 3 || $places[$id][0] == 4) места @else мест @endif</div>
                             </div>
@@ -191,6 +206,8 @@
             </div>
         </div>
     </section>
+    @endif
+    @if (count($reviews) > 0)
     <section class="reviews-slider">
         <h2 class="simple-sub-title">Отзывы об организаторе</h2>
         <div class="swiper-container">
@@ -200,141 +217,36 @@
                 <span class="btn">Понятно</span>
             </div>
             <div class="swiper-wrapper">
-                <div class="swiper-slide swiper-slide1">
+                @foreach ($reviews as $rev_num => $review)
+                    <div class="swiper-slide swiper-slide{{$rev_num}}">
                     <div class="review">
                         <div class="review__header">
-                            <span>Маргарита С.</span><span>11 апреля 2019</span>
+                            <span>{{$review->name}} {{substr($review->lastname, 0, 1)}}.</span><span>{{ Date::parse($review->date)->format('j F Y') }}</span>
                         </div>
                         <p class="review__text">
-                            Отличный мастер ! Руки откуда надо ,необходимые инструменты наличии! Качественно и быстро устранил засор я очень довольна. Отличный мастер ! Руки откуда надо, необходимые инструменты наличии!
+                            {{$review->text_review}}
                         </p>
+                        @if ($attachment[$rev_num][0] != null)
                         <div class="review__slider">
                             <div class="swiper-container">
                                 <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <a href='/images/review.png' data-fancybox='review1'><img src="/images/review.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review2.png' data-fancybox='review1'><img src="/images/review2.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review3.png' data-fancybox='review1'><img src="/images/review3.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review4.png' data-fancybox='review1'><img src="/images/review4.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review5.png' data-fancybox='review1'><img src="/images/review5.png" alt=""></a>
-                                    </div>
+                                    @foreach ($attachment[$rev_num][0] as $count => $photo)
+                                        <div class="swiper-slide">
+                                            <a href='/uploads/images/{{$photo}}' data-fancybox='review{{$rev_num}}'><img src="/uploads/images/{{$photo}}" alt=""></a>
+                                        </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="swiper-button-prev"></div>
                             <div class="swiper-button-next"></div>
                         </div>
+                        @endif
                     </div>
                 </div>
-                <div class="swiper-slide swiper-slide2">
-                    <div class="review">
-                        <div class="review__header">
-                            <span>Маргарита С.</span><span>11 апреля 2019</span>
-                        </div>
-                        <p class="review__text">
-                            Отличный мастер ! Руки откуда надо ,необходимые инструменты наличии! Качественно и быстро устранил засор я очень довольна. Отличный мастер ! Руки откуда надо, необходимые инструменты наличии!
-                        </p>
-                        <div class="review__slider">
-                            <div class="swiper-container">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <a href='/images/review.png' data-fancybox='review2'><img src="/images/review.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review2.png' data-fancybox='review2'><img src="/images/review2.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review3.png' data-fancybox='review2'><img src="/images/review3.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review4.png' data-fancybox='review2'><img src="/images/review4.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review5.png' data-fancybox='review2'><img src="/images/review5.png" alt=""></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide3">
-                    <div class="review">
-                        <div class="review__header">
-                            <span>Маргарита С.</span><span>11 апреля 2019</span>
-                        </div>
-                        <p class="review__text">
-                            Отличный мастер ! Руки откуда надо ,необходимые инструменты наличии! Качественно и быстро устранил засор я очень довольна. Отличный мастер ! Руки откуда надо, необходимые инструменты наличии!
-                        </p>
-                        <div class="review__slider">
-                            <div class="swiper-container">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <a href='/images/review.png' data-fancybox='review3'><img src="/images/review.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review2.png' data-fancybox='review3'><img src="/images/review2.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review3.png' data-fancybox='review3'><img src="/images/review3.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review4.png' data-fancybox='review3'><img src="/images/review4.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review5.png' data-fancybox='review3'><img src="/images/review5.png" alt=""></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide4">
-                    <div class="review">
-                        <div class="review__header">
-                            <span>Маргарита С.</span><span>11 апреля 2019</span>
-                        </div>
-                        <p class="review__text">
-                            Отличный мастер ! Руки откуда надо ,необходимые инструменты наличии! Качественно и быстро устранил засор я очень довольна. Отличный мастер ! Руки откуда надо, необходимые инструменты наличии!
-                        </p>
-                        <div class="review__slider">
-                            <div class="swiper-container">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <a href='/images/review.png' data-fancybox='review3'><img src="/images/review.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review2.png' data-fancybox='review3'><img src="/images/review2.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review3.png' data-fancybox='review3'><img src="/images/review3.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review4.png' data-fancybox='review3'><img src="/images/review4.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='/images/review5.png' data-fancybox='review3'><img src="/images/review5.png" alt=""></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-
     </section>
+    @endif
     @include('blocks.features')
 @endsection

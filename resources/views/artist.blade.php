@@ -2,30 +2,30 @@
 
 @section('content')
     <section class="artist-top">
-        <img class='artist-top__bg' src="/uploads/avatars/{{ $user->avatar }}" alt="">
+        <img class='artist-top__bg' @if ($user->avatar) src="/uploads/avatars/{{ $user->avatar }}" @else src="/images/artist.png" @endif alt="">
         <div class="center-wrap">
             <div class="artist-top__wrap">
                 <div class="artist-top__img">
                     <div>
-                        <img src="/uploads/avatars/{{ $user->avatar }}" alt="">
+                        <img @if ($user->avatar) src="/uploads/avatars/{{ $user->avatar }}" @else src="/images/artist.png" @endif alt="">
                     </div>
                 </div>
                 <div class="artist-top__content">
                     <h1 class="artist-top__title">{{ $user->login }}</h1>
                     <div class="artist-top__info">
                         <div>
-                            <p><span>Возраст</span>{{ $years }} лет</p>
-                            <p><span>Отзывы</span>726</p>
+                            <p><span>Возраст</span>@if($user->expirience == null)не задан@else{{ $years }} лет@endif</p>
+                            <p><span>Отзывы</span>{{$count_reviews}}</p>
                         </div>
                         <div>
-                            <p><span>Опыт</span>8 лет</p>
+                            <p><span>Опыт</span>@if($user->expirience == null)не задан@else{{$user->expirience}} лет@endif</p>
                             <p>
-                                <span>Рейтинг</span>4.5
-                                <img alt="1" src="/img/star-on.png">
-                                <img alt="2" src="/img/star-on.png">
-                                <img alt="3" src="/img/star-on.png">
-                                <img alt="4" src="/img/star-on.png">
-                                <img alt="5" src="/img/star-half.png">
+                                <span>Рейтинг</span>{{number_format($user_rating, 2, '.', '')}}
+                                @if($user_rating > 0 && $user_rating < 1) <img alt="5" src="/img/star-half.png"> @elseif($user_rating >= 1 || $user_rating == 1) <img alt="5" src="/img/star-on.png"> @else <img alt="5" src="/img/star-off.png"> @endif
+                                @if($user_rating > 1 && $user_rating < 2) <img alt="5" src="/img/star-half.png"> @elseif($user_rating >= 2 || $user_rating == 2) <img alt="5" src="/img/star-on.png"> @else <img alt="5" src="/img/star-off.png"> @endif
+                                @if($user_rating > 2 && $user_rating < 3) <img alt="5" src="/img/star-half.png"> @elseif($user_rating >= 3 || $user_rating == 3) <img alt="5" src="/img/star-on.png"> @else <img alt="5" src="/img/star-off.png"> @endif
+                                @if($user_rating > 3 && $user_rating < 4) <img alt="5" src="/img/star-half.png"> @elseif($user_rating >= 4 || $user_rating == 4) <img alt="5" src="/img/star-on.png"> @else <img alt="5" src="/img/star-off.png"> @endif
+                                @if($user_rating > 4 && $user_rating < 5) <img alt="5" src="/img/star-half.png"> @elseif($user_rating >= 5 || $user_rating == 5) <img alt="5" src="/img/star-on.png"> @else <img alt="5" src="/img/star-off.png"> @endif
                             </p>
                         </div>
                     </div>
@@ -36,8 +36,8 @@
     <section class="info-cont">
         <div class="center-wrap artist-infoblock">
             <div class="left-info">
-                <div id="calendar"></div>
-                <a href="" class="btn">Пригласить на мероприятие</a>
+                <div class="datepicker-here"></div>
+                @if ($user->status == 'artist')<a @if(Auth::check()) @if(Auth::user()->status == 'organizator') id="gift_event" @endif @else  href="/login" @endif class="btn @if(Auth::check() && Auth::user()->status == 'artist') only-organizator @endif">Пригласить на мероприятие</a>@endif
             </div>
             <div class="right-info">
                 <h2 class="info-cont__title">Информация и контакты</h2>
@@ -48,16 +48,20 @@
                     <p class="info-cont__tag">Оригинальный жанр-группа</p>
                 </div>--}}
                 <div class="info-cont__contacts">
+                    @if ($user->phone)
                     <div class="info-cont__contacts-item">
                         <a id="none_phone">+7 XXX XXX-XX-XX</a>
                         <a id="show_phone" class="none">{{ $user->phone }}</a>
                         <span id="btn_phone_show">Показать телефон</span>
                     </div>
+                    @endif
+                    @if ($user->email)
                     <div class="info-cont__contacts-item">
                         <a id="none_email">XXXXXXX{{ '@'.$email_domain }}</a>
                         <a id="show_email" class="none">{{ $user->email }}</a>
                         <span id="btn_email_show">Показать email</span>
                     </div>
+                    @endif
                     <div class="socials socials--info-cont">
                         @if ($user->facebook != null)
                             <a href="{{ $user->facebook }}" class="socials__item">
@@ -118,11 +122,13 @@
         <div class="center-wrap">
             <h2 class="directions__title">Направления и проекты</h2>
             <div class="directions__tags">
-                <div class="directions__tags-item directions__tags-item--active">@if($skills){{$available_genres[$skills->current_genre-1]['name']}}@endif
+                @if($skills->current_genre)
+                <div class="directions__tags-item directions__tags-item--active">{{$available_genres[$skills->current_genre-1]['name']}}
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M8.37826 0.622538L10.4135 5.43954L15.6239 5.88715C15.9853 5.91836 16.1323 6.36926 15.858 6.60662L11.9058 10.0307L13.0901 15.1245C13.1723 15.4784 12.7887 15.7569 12.4783 15.5688L8.00046 12.8683L3.52266 15.5688C3.21138 15.7561 2.82865 15.4776 2.91078 15.1245L4.09512 10.0307L0.142135 6.6058C-0.132183 6.36844 0.0140106 5.91754 0.37621 5.88633L5.58662 5.43872L7.62183 0.622538C7.7631 0.287442 8.237 0.287442 8.37826 0.622538Z" fill="#7A7999"/>
                     </svg>
                 </div>
+                @endif
                 <?php $i = 0; ?>
                 @foreach ($genre_artist as $item => $key)
                     @if($key != null && $item != $skills->current_genre)
@@ -159,6 +165,9 @@
                                     <div class="play_track" data-track-play="/uploads/tracks/{{ $track->url }}"></div>
                                     <div class="track_name">{{ $track->name }}</div>
                                     <div class="time_track">{{ $track->duration }}</div>
+                                    <div class="hp_slide">
+                                        <div class="hp_range"></div>
+                                    </div>
                                 </div>
                             @endforeach
                         @endif
@@ -173,317 +182,128 @@
             </div>
         </div>
     </section>@endif
-
-    <section class="reviews-slider">
-        <h2 class="simple-sub-title simple-sub-title--link">Отзывы
-            <div class="select">
-                <div class="select__value">Все направления</div>
-                <div class="select__variants">
-                    <label for="" class="select__variant select__variant--active"><span>03</span></label>
-                    <label for="" class="select__variant"><span>04</span></label>
-                    <label for="" class="select__variant"><span>05</span></label>
-                    <label for="" class="select__variant"><span>06</span></label>
-                    <label for="" class="select__variant"><span>07</span></label>
-                    <label for="" class="select__variant"><span>08</span></label>
-                    <label for="" class="select__variant"><span>09</span></label>
+    @if (count($reviews) > 0)
+        <section class="reviews-slider">
+            <h2 class="simple-sub-title simple-sub-title--link">Отзывы</h2>
+            <div class="swiper-container">
+                <div class="understand">
+                    <img src="/images/understand.svg" alt="">
+                    <p class="understand__text">Потяните влево или вправо<br> для смены слайда</p>
+                    <span class="btn">Понятно</span>
+                </div>
+                <div class="swiper-wrapper">
+                    @foreach ($reviews as $rev_num => $review)
+                        <div class="swiper-slide swiper-slide{{$rev_num}}">
+                            <div class="review">
+                                <div class="review__header">
+                                    <span>{{$review->name}} {{substr($review->lastname, 0, 1)}}.</span><span>{{ Date::parse($review->date)->format('j F Y') }}</span>
+                                </div>
+                                <p class="review__text">
+                                    {{$review->text_review}}
+                                </p>
+                                @if ($attachment[$rev_num][0] != null)
+                                    <div class="review__slider">
+                                        <div class="swiper-container">
+                                            <div class="swiper-wrapper">
+                                                @foreach ($attachment[$rev_num][0] as $count => $photo)
+                                                    <div class="swiper-slide">
+                                                        <a href='/uploads/images/{{$photo}}' data-fancybox='review{{$rev_num}}'><img src="/uploads/images/{{$photo}}" alt=""></a>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                        <div class="swiper-button-prev"></div>
+                                        <div class="swiper-button-next"></div>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-
-        </h2>
-        <div class="swiper-container">
-            <div class="understand">
-                <img src="/images/understand.svg" alt="">
-                <p class="understand__text">Потяните влево или вправо<br> для смены слайда</p>
-                <span class="btn">Понятно</span>
-            </div>
-            <div class="swiper-wrapper">
-                <div class="swiper-slide swiper-slide1">
-                    <div class="review">
-                        <div class="review__header">
-                            <span>Маргарита С.</span><span>11 апреля 2019</span>
-                        </div>
-                        <p class="review__text">
-                            Отличный мастер ! Руки откуда надо ,необходимые инструменты наличии! Качественно и быстро устранил засор я очень довольна. Отличный мастер ! Руки откуда надо, необходимые инструменты наличии!
-                        </p>
-                        <div class="review__slider">
-                            <div class="swiper-container">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review.png' data-fancybox='review1'><img src="/images/review.png" alt=""></a>
+        </section>
+    @endif
+    @if (count($owner_events) > 0)
+        <section class="event-slider">
+            <h2 class='simple-sub-title'>Ближайшие мероприятия @if ($user->status  == "artist")артиста @else организатора @endif</h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    @foreach ($owner_events as $id => $event)
+                        <div class="swiper-slide">
+                            <div class="event-item">
+                                <div class="event-item__img">
+                                    <a href="/event/{{$event->id}}"><img src="/uploads/images/{{$event->cover}}" alt=""></a>
+                                </div>
+                                <div class="event-item__content">
+                                    <div class="event-item__date">
+                                        <span>{{ mb_strimwidth(Date::parse($event_data[$id][0][0][0])->format('D'), 0, 2, "") }}</span>
+                                        <p>{{ Date::parse($event_data[$id][0][0][0])->format('j') }}</p>
+                                        <span>{{ Date::parse($event_data[$id][0][0][0])->format('M') }}</span>
                                     </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review2.png' data-fancybox='review1'><img src="/images/review2.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review3.png' data-fancybox='review1'><img src="/images/review3.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review4.png' data-fancybox='review1'><img src="/images/review4.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review5.png' data-fancybox='review1'><img src="/images/review5.png" alt=""></a>
+                                    <div class="event-item__info">
+                                        <span class="event-item__type">{{$type_events[$id][0]}}</span>
+                                        <h3 class="event-item__title"><a href="/event/{{$event->id}}">{{$event->name}}</a></h3>
+                                        <p class="event-item__time">с {{$event_data[$id][0][0][1]}} до {{$event_data[$id][0][0][2]}}</p>
+                                        <p class="event-item__place">{{$owner_login[$id][0]}}</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide2">
-                    <div class="review">
-                        <div class="review__header">
-                            <span>Маргарита С.</span><span>11 апреля 2019</span>
-                        </div>
-                        <p class="review__text">
-                            Отличный мастер ! Руки откуда надо ,необходимые инструменты наличии! Качественно и быстро устранил засор я очень довольна. Отличный мастер ! Руки откуда надо, необходимые инструменты наличии!
-                        </p>
-                        <div class="review__slider">
-                            <div class="swiper-container">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review.png' data-fancybox='review2'><img src="/images/review.png" alt=""></a>
+                                <div class="event-item__bot">
+                                    <div class="event-item__who">
+                                        {{--<span>гитаристы</span>
+                                        <span>рэперы</span>
+                                        <span>ведущие</span>--}}
                                     </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review2.png' data-fancybox='review2'><img src="/images/review2.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review3.png' data-fancybox='review2'><img src="/images/review3.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review4.png' data-fancybox='review2'><img src="/images/review4.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review5.png' data-fancybox='review2'><img src="/images/review5.png" alt=""></a>
-                                    </div>
+                                    <div class="event-item__places">{{$places[$id][0]}}@if ($places[$id][0] == 1) место @elseif($places[$id][0] == 2 || $places[$id][0] == 3 || $places[$id][0] == 4) места @else мест @endif</div>
                                 </div>
                             </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
                         </div>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide3">
-                    <div class="review">
-                        <div class="review__header">
-                            <span>Маргарита С.</span><span>11 апреля 2019</span>
-                        </div>
-                        <p class="review__text">
-                            Отличный мастер ! Руки откуда надо ,необходимые инструменты наличии! Качественно и быстро устранил засор я очень довольна. Отличный мастер ! Руки откуда надо, необходимые инструменты наличии!
-                        </p>
-                        <div class="review__slider">
-                            <div class="swiper-container">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review.png' data-fancybox='review3'><img src="/images/review.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review2.png' data-fancybox='review3'><img src="/images/review2.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review3.png' data-fancybox='review3'><img src="/images/review3.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review4.png' data-fancybox='review3'><img src="/images/review4.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review5.png' data-fancybox='review3'><img src="/images/review5.png" alt=""></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide swiper-slide4">
-                    <div class="review">
-                        <div class="review__header">
-                            <span>Маргарита С.</span><span>11 апреля 2019</span>
-                        </div>
-                        <p class="review__text">
-                            Отличный мастер ! Руки откуда надо ,необходимые инструменты наличии! Качественно и быстро устранил засор я очень довольна. Отличный мастер ! Руки откуда надо, необходимые инструменты наличии!
-                        </p>
-                        <div class="review__slider">
-                            <div class="swiper-container">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review.png' data-fancybox='review3'><img src="/images/review.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review2.png' data-fancybox='review3'><img src="/images/review2.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review3.png' data-fancybox='review3'><img src="/images/review3.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review4.png' data-fancybox='review3'><img src="/images/review4.png" alt=""></a>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <a href='assets/images/review5.png' data-fancybox='review3'><img src="/images/review5.png" alt=""></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="swiper-button-prev"></div>
-                            <div class="swiper-button-next"></div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-
-    </section>
-    <section class="event-slider">
-        <h2 class='simple-sub-title'>Ближайшие мероприятия</h2>
-        <div class="swiper-container">
-            <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="event-item">
-                        <div class="event-item__img">
-                            <img src="/images/event-img1.png" alt="">
-                        </div>
-
-                        <div class="event-item__content">
-                            <div class="event-item__date">
-                                <span>пн</span>
-                                <p>13</p>
-                                <span>авг</span>
-                            </div>
-                            <div class="event-item__info">
-                                <span class="event-item__type">фестиваль</span>
-                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
-                                <p class="event-item__time">с 14:30 до 18:00</p>
-                                <p class="event-item__place">Chorcha Entertainment</p>
-                            </div>
-                        </div>
-                        <div class="event-item__bot">
-                            <div class="event-item__who">
-                                <span>гитаристы</span>
-                                <span>рэперы</span>
-                                <span>ведущие</span>
-                            </div>
-                            <div class="event-item__places">3 места</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="event-item">
-                        <div class="event-item__img">
-                            <img src="/images/event-img1.png" alt="">
-                        </div>
-
-                        <div class="event-item__content">
-                            <div class="event-item__date">
-                                <span>пн</span>
-                                <p>13</p>
-                                <span>авг</span>
-                            </div>
-                            <div class="event-item__info">
-                                <span class="event-item__type">фестиваль</span>
-                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
-                                <p class="event-item__time">с 14:30 до 18:00</p>
-                                <p class="event-item__place">Chorcha Entertainment</p>
-                            </div>
-                        </div>
-                        <div class="event-item__bot">
-                            <div class="event-item__who">
-                                <span>гитаристы</span>
-                                <span>рэперы</span>
-                                <span>ведущие</span>
-                            </div>
-                            <div class="event-item__places">3 места</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="event-item">
-                        <div class="event-item__img">
-                            <img src="/images/event-img1.png" alt="">
-                        </div>
-
-                        <div class="event-item__content">
-                            <div class="event-item__date">
-                                <span>пн</span>
-                                <p>13</p>
-                                <span>авг</span>
-                            </div>
-                            <div class="event-item__info">
-                                <span class="event-item__type">фестиваль</span>
-                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
-                                <p class="event-item__time">с 14:30 до 18:00</p>
-                                <p class="event-item__place">Chorcha Entertainment</p>
-                            </div>
-                        </div>
-                        <div class="event-item__bot">
-                            <div class="event-item__who">
-                                <span>гитаристы</span>
-                                <span>рэперы</span>
-                                <span>ведущие</span>
-                            </div>
-                            <div class="event-item__places">3 места</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="event-item">
-                        <div class="event-item__img">
-                            <img src="/images/event-img1.png" alt="">
-                        </div>
-
-                        <div class="event-item__content">
-                            <div class="event-item__date">
-                                <span>пн</span>
-                                <p>13</p>
-                                <span>авг</span>
-                            </div>
-                            <div class="event-item__info">
-                                <span class="event-item__type">фестиваль</span>
-                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
-                                <p class="event-item__time">с 14:30 до 18:00</p>
-                                <p class="event-item__place">Chorcha Entertainment</p>
-                            </div>
-                        </div>
-                        <div class="event-item__bot">
-                            <div class="event-item__who">
-                                <span>гитаристы</span>
-                                <span>рэперы</span>
-                                <span>ведущие</span>
-                            </div>
-                            <div class="event-item__places">3 места</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="event-item">
-                        <div class="event-item__img">
-                            <img src="/images/event-img1.png" alt="">
-                        </div>
-
-                        <div class="event-item__content">
-                            <div class="event-item__date">
-                                <span>пн</span>
-                                <p>13</p>
-                                <span>авг</span>
-                            </div>
-                            <div class="event-item__info">
-                                <span class="event-item__type">фестиваль</span>
-                                <h3 class="event-item__title"><a href="/event.html">Holi Dance of Colours León 2019</a></h3>
-                                <p class="event-item__time">с 14:30 до 18:00</p>
-                                <p class="event-item__place">Chorcha Entertainment</p>
-                            </div>
-                        </div>
-                        <div class="event-item__bot">
-                            <div class="event-item__who">
-                                <span>гитаристы</span>
-                                <span>рэперы</span>
-                                <span>ведущие</span>
-                            </div>
-                            <div class="event-item__places">3 места</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
+    @endif
     @include('blocks.features')
+@endsection
+
+@section('custom_scripts')
+    <script>
+        var player = document.getElementById('play_player');
+
+        if (player) {
+            player.addEventListener("timeupdate", function() {
+                var currentTime = player.currentTime;
+                var duration = player.duration;
+                $('.hp_range').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},250,'linear');
+            });
+        }
+
+        var artist_id = {{$user->id}};
+        var selected_date = '';
+        var reserved_days = new Array();
+
+        @foreach ($reserved_calendar as $num => $date)
+            reserved_days.push('{{$date[0]}} 00:00:00');
+        @endforeach
+
+        $('.left-info .datepicker-here').datepicker({
+            minDate: new Date(),
+            onRenderCell: function(date, cellType) {
+                var i;
+                for (i = 0; i < reserved_days.length; i++) {
+                    var pattern = /(\d{2})\.(\d{2})\.(\d{4})/;
+                    var dates = new Date(reserved_days[i].replace(pattern,'$3-$2-$1'));
+                    if (cellType == 'day' && date.getDate() == dates.getDate() && date.getMonth() == dates.getMonth()) {
+                        return {
+                            classes: 'accepted-date',
+                            disabled: true
+                        }
+                    }
+                }
+            },
+            onSelect: function(date) {
+                selected_date = date;
+                $('#choice_date').val(selected_date);
+            }
+        });
+    </script>
 @endsection

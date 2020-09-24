@@ -18,117 +18,18 @@
     <section class="blog">
         <div class="center-wrap">
             <div class="blog__list">
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog1.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a  href="about.html" class="blog__item blog__item--big">
-                    <div>
-                        <img src="images/blog2.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog3.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog4.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog5.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a  href="about.html" class="blog__item blog__item--big">
-                    <div>
-                        <img src="images/blog6.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog7.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog8.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog9.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog10.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog11.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog12.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog13.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog14.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a  href="about.html" class="blog__item blog__item--big">
-                    <div>
-                        <img src="images/blog15.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog16.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog17.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
-                <a href="/about.html" class="blog__item">
-                    <div>
-                        <img src="images/blog18.png" alt="">
-                        <h3>Эксплуатация бассейна - основные понятия</h3>
-                    </div>
-                </a>
+                @foreach($articles as $item => $article)
+                    <a href="/blog/{{$article->id}}" class="blog__item">
+                        <div>
+                            <img src="/uploads/images/{{$article->image}}" alt="">
+                            <h3>{{$article->title}}</h3>
+                        </div>
+                    </a>
+                @endforeach
                 <a href="" class="blog__item blog__item--hide"></a>
                 <a href="" class="blog__item blog__item--hide"></a>
             </div>
+            {{$articles->links()}}
         </div>
     </section>
     @include('blocks.features')

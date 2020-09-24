@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+<title>Авторизация - MuzPlace</title>
+@endsection
+
 @section('content')
     <div class="autorization">
         <div class="registered-login active">
@@ -12,7 +16,7 @@
                 <form method="POST" action="{{ route('login') }}" class="login-user">
                     @csrf
                     <div class="input-field">
-                        <input id="email" type="email" class="login-field @error('email') is-invalid @enderror" placeholder="Телефон или E-mail" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                        <input id="email" type="email" class="login-field @error('email') is-invalid @enderror" placeholder="E-mail" name="email" value="{{ old('email') }}" required>
                         @error('email')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -21,7 +25,7 @@
                     </div>
 
                     <div class="input-field">
-                        <input id="password" type="password" class="login-field @error('password') is-invalid @enderror" name="password" placeholder="Пароль" required autocomplete="current-password">
+                        <input id="password" type="password" class="login-field @error('password') is-invalid @enderror" name="password" placeholder="Пароль" required>
                         @error('password')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

@@ -47,6 +47,9 @@
                                     <div class="track_name">{{ $track->name }}</div>
                                     <div class="time_track">{{ $track->duration }}</div>
                                     <div class="delete_track" data-track-id="{{ $track->id }}"></div>
+                                    <div class="hp_slide">
+                                        <div class="hp_range"></div>
+                                    </div>
                                 </div>
                                 @endforeach
                             @endif
@@ -56,6 +59,14 @@
                        </div>
                         <div class="add_track_list lk-event__item-btns">
                             <label class="add_track" data-tracks="0">Добавить трек</label>
+                        </div>
+                        <div class="description_tracks type_artists">
+                            <label for="type-list">Тип артиста</label>
+                            <select name="type" id="type-list">
+                                @foreach ($types as $item => $type)
+                                    <option value="{{$type->id}}" @if (Auth::user()->type  == $type->id) selected @endif>{{$type->name}}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="description_tracks">
                             <label for="decription-albom">Описание</label>
@@ -83,4 +94,15 @@
             </div>
         </form>
     </div>
+@endsection
+
+@section('custom_scripts')
+    <script>
+        var player = document.getElementById('play_player');
+        player.addEventListener("timeupdate", function() {
+            var currentTime = player.currentTime;
+            var duration = player.duration;
+            $('.hp_range').stop(true,true).animate({'width':(currentTime +.25)/duration*100+'%'},250,'linear');
+        });
+    </script>
 @endsection

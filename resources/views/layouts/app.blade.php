@@ -2,12 +2,15 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
+    {!! SEOMeta::generate() !!}
+    @yield('title')
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet"></head>
-    <link rel="stylesheet" href="/css/jsRapCalendar.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css?2">
+    <link href="{{ asset('css/styles.css?5') }}" rel="stylesheet">
+    <link rel="stylesheet" href="/css/jsRapCalendar.css?2" />
+    <link href="/css/datepicker.css?2" rel="stylesheet" type="text/css">
+    <link href="/css/chung-timepicker.css?2" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div id="app">
@@ -15,20 +18,26 @@
             <div class="center-wrap">
                 <a href='{{ route('index') }}' class="header__logo">MuzPlace</a>
                 <p class="header__desk">платформа музыкантов и организаторов</p>
-                <a href="#" target="_blank" class="header__city">
+                <div target="_blank" class="header__city">
                     <svg width="9" height="12" viewBox="0 0 9 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M4.3 0C2.14664 0 0.4 1.881 0.4 4.2C0.4 7.35 4.3 12 4.3 12C4.3 12 8.2 7.35 8.2 4.2C8.2 1.881 6.45336 0 4.3 0ZM4.3 5.7C3.53114 5.7 2.90714 5.028 2.90714 4.2C2.90714 3.372 3.53114 2.7 4.3 2.7C5.06886 2.7 5.69286 3.372 5.69286 4.2C5.69286 5.028 5.06886 5.7 4.3 5.7Z" fill="#828282"/>
                     </svg>
 
-                    Санкт-Петербург</a>
-                <form action="" class='header__search'>
+                    @if (session()->get('city'))<span class="other_city">{{session()->get('city')}}</span> @else <span class="other_city">Москва</span>
+                    @if(Route::currentRouteName() == 'index')<div class="label-city">Вы из Москвы?
+                        <div class="choose-variante">
+                            <a href="/city/1" class="moscow">Да</a> <span class="other_city">Выбрать город</span>
+                        </div>
+                    </div>@endif @endif
+                </div>
+                <form action="/search" method="get" class='header__search'>
                     <label for="">
                         <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M10.8328 11.4122L8.12106 8.45258C8.81829 7.58281 9.2003 6.48845 9.2003 5.34917C9.2003 2.68736 7.13663 0.521729 4.60015 0.521729C2.06367 0.521729 0 2.68736 0 5.34917C0 8.01098 2.06367 10.1766 4.60015 10.1766C5.55238 10.1766 6.45981 9.87521 7.23563 9.30305L9.96792 12.2852C10.0821 12.4096 10.2357 12.4783 10.4003 12.4783C10.5561 12.4783 10.7039 12.4159 10.8162 12.3026C11.0546 12.0618 11.0622 11.6626 10.8328 11.4122ZM4.60015 1.78106C6.47501 1.78106 8.00026 3.38167 8.00026 5.34917C8.00026 7.31667 6.47501 8.91728 4.60015 8.91728C2.72529 8.91728 1.20004 7.31667 1.20004 5.34917C1.20004 3.38167 2.72529 1.78106 4.60015 1.78106Z" fill="#828282"/>
                         </svg>
 
                     </label>
-                    <input type="text" placeholder="Поиск">
+                    <input type="text" name="name" placeholder="Поиск">
                     <input type="submit">
                 </form>
                 <nav class="header__nav">
@@ -44,7 +53,8 @@
                 </nav>
                 @auth
                     <div class="user-profiles">
-                        <a href="{{ route('home') }}"><img @if (Auth::user()->avatar  != null) src="/uploads/avatars/{{ Auth::user()->avatar }}" @else src="/img/user_ava.png" @endif alt=""> <span>{{ Auth::user()->name }}</span></a>
+                        <a href="{{ route('home') }}"><img @if (Auth::user()->avatar  != null) src="/uploads/avatars/{{ Auth::user()->avatar }}" @else src="/img/user_ava.png" @endif alt=""> <span>{{ Auth::user()->login }}</span></a>
+                        <span class="user-type">@if(Auth::user()->status == 'artist') Артист @else Организатор @endif</span>
                     </div>
                     <a class="header__login header__login--logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -70,11 +80,12 @@
 
         <main class="py-4">
             @auth
+                @if (Route::currentRouteName() != 'verification.notice' && Route::currentRouteName() != 'index' && Route::currentRouteName() != 'search' && Route::currentRouteName() != 'artists' && Route::currentRouteName() != 'events' && Route::currentRouteName() != 'blog' && Route::currentRouteName() != 'article' && Route::currentRouteName() != 'faq' && Route::currentRouteName() != 'page' && Route::currentRouteName() != 'event' && Route::currentRouteName() != 'artist')
                 <section class="lk-menu">
                     <div class="center-wrap">
                         <a href="{{ route('home') }}" class="lk-menu__link @if(Route::currentRouteName() == 'home') lk-menu__link--active @endif">Мои мероприятия</a>
-                        <a href="{{ route('lk-messages') }}" class="lk-menu__link @if(Route::currentRouteName() == 'lk-messages') lk-menu__link--active @endif">Уведомления</a>
-                        <a href="{{ route('lk-chat') }}" class="lk-menu__link lk-menu__link--message @if(Route::currentRouteName() == 'lk-chat') lk-menu__link--active @endif">Сообщения <div><div><span>4</span></div></div></a>
+                        <a href="{{ route('lk-messages') }}" class="lk-menu__link lk-menu__link--message @if(Route::currentRouteName() == 'lk-messages') lk-menu__link--active @endif">Уведомления <div><div> @if(App\Notices::count_notice(Auth::user()->id) != 0) <span id="count_notices">{{App\Notices::count_notice(Auth::user()->id)}}</span> @endif </div></div></a>
+                        <a href="{{ route('lk-chat') }}" class="lk-menu__link lk-menu__link--message @if(Route::currentRouteName() == 'lk-chat') lk-menu__link--active @endif">Сообщения <div><div>@if(App\Chat::count_chat(Auth::user()->id) != 0) <span id="count_chat">{{App\Chat::count_chat(Auth::user()->id)}}</span> @endif</div></div></a>
                         <a href="{{ route('lk-info') }}" class="lk-menu__link @if(Route::currentRouteName() == 'lk-info') lk-menu__link--active @endif">Личная информация</a>
                         @if (Auth::user()->status  == "artist")
                             <a href="{{ route('lk-skills') }}" class="lk-menu__link @if(Route::currentRouteName() == 'lk-skills') lk-menu__link--active @endif">Мои навыки</a>
@@ -82,21 +93,23 @@
                         <a href="{{ route('lk-reviews') }}" class="lk-menu__link @if(Route::currentRouteName() == 'lk-reviews') lk-menu__link--active @endif">Мои отзывы</a>
                     </div>
                 </section>
+                @endif
             @endauth
             @yield('content')
         </main>
 
         <footer class="footer">
             <div class="center-wrap">
-                <a href='{{ route('index') }}' class="footer__copyright">© 2019 SlogoPro</a>
+                <a href='{{ route('index') }}' class="footer__copyright">© 2019 MuzPlace</a>
                 <nav class="footer__nav">
                     <ul class="footer__nav-list">
                         <div class="footer__nav-left">
                             <li class="footer__nav-item"><a href="" class="footer__nav-link">Служба поддержки</a></li>
                             <li class="footer__nav-item"><a href="" class="footer__nav-link">Контакты</a></li>
+                            <li class="footer__nav-item"><a href="/page/info" class="footer__nav-link">О нас</a></li>
                         </div>
                         <div class="footer__nav-right">
-                            <li class="footer__nav-item"><a href="{{ route('about') }}" class="footer__nav-link">Частые вопросы</a></li>
+                            <li class="footer__nav-item"><a href="{{ route('faq') }}" class="footer__nav-link">Частые вопросы</a></li>
                             <li class="footer__nav-item"><a href="{{ route('blog') }}" class="footer__nav-link">Блог</a></li>
                         </div>
                     </ul>
@@ -104,13 +117,17 @@
             </div>
         </footer>
     </div>
-
-    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/scripts.js') }}" defer></script>
-    <script src="{{ asset('js/jsRapCalendar.js') }}" defer></script>
+    @include('blocks.popups')
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script src="/js/datepicker.js?2"></script>
+    <script src="/js/chung-timepicker.js?2"></script>
+    <script src="/js/jquery.raty.js?2"></script>
+    <script src="/js/raty.js?2"></script>
+    <script src="{{ asset('js/scripts.js?4') }}"></script>
+    @yield('custom_scripts')
 </body>
 </html>

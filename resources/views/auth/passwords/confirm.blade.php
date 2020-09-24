@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
+@section('title')
+    <title>Подтверждение пароля - MuzPlace</title>
+@endsection
+
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mail-verify">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Confirm Password') }}</div>
@@ -13,7 +17,7 @@
                     <form method="POST" action="{{ route('password.confirm') }}">
                         @csrf
 
-                        <div class="form-group row">
+                        <div class="form-group row reset-pass">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
@@ -21,13 +25,13 @@
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
+                                        <strong>Пароли не совпадают</strong>
                                     </span>
                                 @enderror
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <div class="form-group row mb-0 reset-pass">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Confirm Password') }}
